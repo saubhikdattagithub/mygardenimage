@@ -1,0 +1,5 @@
+description: Podman service
+type: element
+features:
+  include:
+    - base
