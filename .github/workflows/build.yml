@@ -13,4 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Build the image
-        run: ./build base
+        run: ./build nginx
+      - uses: actions/upload-artifact@v4
+        with:
+          name: my-first-garden-image
+          path: .build/

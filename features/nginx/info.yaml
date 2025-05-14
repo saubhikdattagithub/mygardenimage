@@ -1,0 +1,5 @@
+description: HTTP server using Nginx
+type: element
+features:
+  include:
+    - base
