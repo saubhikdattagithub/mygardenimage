@@ -27,7 +27,7 @@ jobs:
       - name: create pull request
         run: |
           if [[ '${{ steps.update.outputs.has-update }}' ]]; then
-            BRANCH_NAME="package-ignition-legacy-${{ matrix.branch }}"
+            BRANCH_NAME="ignition-legacy-${{ matrix.branch }}"
             git checkout -b "$BRANCH_NAME"
             git add prepare_source
             git config --global user.name "Garden Linux Builder"
