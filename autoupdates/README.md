@@ -29,19 +29,8 @@ Problem: We have repositories with pinned versions of upstream packages. We need
      * Specific arguments passed to uscan specifying options (git), url, version/tags regex to match fetching the newer release
    *  debian/changelog
      *  Formatted header with current version which uscan reads and compares from upstream/source
-
-
-|            Package            |   Version   |                                                   Watch file                                                      |
-|:-----------------------------:|:-----------:|:-----------------------------------------------------------------------------------------------------------------:|
-| ignition-legacy               | 2.21.0      | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_ignition-legacy                   |
-| datefudge                     | 1.26        | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_datefudge                         |
-| google-compute-engine-oslogin | 20250123.00 | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_google-compute-engine-oslogin     |
-| python                        | 3.12.2      | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_python3.12                        |
-
-
-     
-
-**Working ::** 
+  
+## Working ::** 
    - The shell script creates a temporary directory in /tmp independent of the production space
    - Execution works with passing the package name as first argument 
    - Forks the git repo of the package with corresponding repo URL/package names
@@ -52,4 +41,11 @@ Problem: We have repositories with pinned versions of upstream packages. We need
    - Uscan executes with customised watch and debiaan/changelog to determine the availability of new version
    - If no new version found, exits, else if a newer version is found, then edits the prepare_source file with new version determined from uscan run.
 
----
+
+|            Package            |   Version   |                                                   Watch file                                                      |
+|:-----------------------------:|:-----------:|:-----------------------------------------------------------------------------------------------------------------:|
+| ignition-legacy               | 2.21.0      | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_ignition-legacy                   |
+| datefudge                     | 1.26        | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_datefudge                         |
+| google-compute-engine-oslogin | 20250123.00 | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_google-compute-engine-oslogin     |
+| python                        | 3.12.2      | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_python3.12                     
+--
