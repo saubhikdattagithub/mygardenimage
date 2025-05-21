@@ -17,8 +17,8 @@ Problem: We have repositories with pinned versions of upstream packages. We need
 
 ## 🚀 Identification
 
-https://github.com/search?q=org%3Agardenlinux%20path%3Aprepare_source%20branch&type=code
-Above are the packages which has pinned versions of the package to pull from upstream url's
+    https://github.com/search?q=org%3Agardenlinux%20path%3Aprepare_source%20branch&type=code 
+ * Above are the packages which has pinned versions of the package to pull from upstream url's
 
 
 ## ⚙️ Solution
