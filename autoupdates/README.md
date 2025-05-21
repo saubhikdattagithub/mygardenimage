@@ -30,7 +30,7 @@ Problem: We have repositories with pinned versions of upstream packages. We need
    *  debian/changelog
      *  Formatted header with current version which uscan reads and compares from upstream/source
   
-## Working ::** 
+## Working 
    - The shell script creates a temporary directory in /tmp independent of the production space
    - Execution works with passing the package name as first argument 
    - Forks the git repo of the package with corresponding repo URL/package names
@@ -49,3 +49,5 @@ Problem: We have repositories with pinned versions of upstream packages. We need
 | google-compute-engine-oslogin | 20250123.00 | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_google-compute-engine-oslogin     |
 | python                        | 3.12.2      | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_python3.12                     
 --
+
+## Screenshot
