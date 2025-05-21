@@ -1,4 +1,4 @@
 version=4
-opts=mode=git, pretty=version v%(version)s \
-  https://github.com/GoogleCloudPlatform/guest-agent.git \
+opts=mode=git, pretty=version \
+  https://github.com/b1-systems/google-guest-agent.git \
   refs/tags/v(\d[\d\.]*)

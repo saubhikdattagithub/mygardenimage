@@ -1,5 +1,5 @@
 version=4
 
-opts=mode=git, pretty=version v%(version)s \
-    https://github.com/containerd/containerd.git \
-    refs/tags/v([0-9][0-9.]+)
+opts=mode=git,pretty=version \
+    https://salsa.debian.org/go-team/packages/containerd.git \
+    refs/tags/v(2\.[0-9.]*(-[0-9]+)?)
