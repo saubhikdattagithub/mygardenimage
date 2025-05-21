@@ -40,8 +40,6 @@ Problem: We have repositories with pinned versions of upstream packages. We need
 
 
      
-Ref:
-https://github.com/saubhikdattagithub/mygardenimage/tree/main/autoupdates 
 
 **Working ::** 
    - The shell script creates a temporary directory in /tmp independent of the production space
