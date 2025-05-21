@@ -1,0 +1,4 @@
+version=4
+opts=mode=git,pretty=version \
+  https://salsa.debian.org/cpython-team/python3.git \
+  refs/tags/upstream/([0-9.]+)

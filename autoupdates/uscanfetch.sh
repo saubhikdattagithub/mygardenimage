@@ -7,10 +7,12 @@ PKGNAME=$1
 REPONAME='package-'$PKGNAME
 DIR=$PKGNAME-$NOW
 HOME=/root/GARDENLINUX001/mygardenimage/autoupdates
+PRPSRC='prepare_source'
 
-mkdir /tmp/work
 mkdir -p /tmp/work/$DIR/debian
 cd /tmp/work/$DIR
+CAP_USCAN='capture_uscan'
+touch $CAP_USCAN
 echo "Changing to Directory :" /tmp/work/$DIR
 
 echo "Package Name determined: " $REPONAME
@@ -19,25 +21,35 @@ git clone $REPOURL
 cd $REPONAME
 echo "Changing to Directory :" $REPONAME
 
-GETVER=$(grep version= prepare_source | cut -d'=' -f2 | cut -d'"' -f2)
-GETVER_ORIG=$(grep version_orig= prepare_source | cut -d'=' -f2 | cut -d'"' -f2)
+GETVER=$(grep version= $PRPSRC | cut -d'=' -f2 | cut -d'"' -f2 | cut -d'-' -f1)
+GETVER_ORIG=$(grep version_orig= $PRPSRC | cut -d'=' -f2 | cut -d'"' -f2 | cut -d'-' -f1 )
+if [[ "$1" =~ "python" ]]; then 
+	GITBRVER=$(grep git_src $PRPSRC | grep github | awk '{print $3}' | sed 's#.*/##; s/^v//')
+else
+	GITBRVER=$(grep git_src $PRPSRC | awk '{print $3}' | sed 's#.*/##; s/^v//')
+fi
+	
 echo "GetVersion: " $GETVER
 echo "GetVersion_Orig: " $GETVER_ORIG
-#if [[ -n  "$GETVER" ]] && [[ "$GETVER" =~ ^[0-9]+$ ]]; then
-#	VER="$GETVER"
-#elif [[ -n "$GETVER_ORIG" ]] && [[ "$GETVER_ORIG" =~ ^[0-9]+$ ]]; then
-#	VER="$GETVER_ORIG"
-#fi
+echo "GitBranchVersion: " $GITBRVER
 
-
-if [[ -n "${GETVER}" ]] && [[ "${GETVER}" =~ [0-9]+$ ]]; then
+if [[ -n "${GETVER}" && "${GETVER}" =~ [0-9]+$ ]]; then
     VER="${GETVER}"
-elif [[ -n "${GETVER_ORIG}" ]]  && [[ "${GETVER_ORIG}" =~ [0-9]+$ ]]; then
+elif [[ -n "${GETVER_ORIG}" && "${GETVER_ORIG}" =~ [0-9]+$ ]]; then
     VER="${GETVER_ORIG}"
+elif [[ -n "${GITBRVER}" && "${GITBRVER}" =~ [0-9]+$ ]]; then
+    VER="${GITBRVER}"
 fi
 
 echo "Version determined : " $VER
 echo "$PKGNAME (${VER}) unstable; urgency=medium" > /tmp/work/$DIR/debian/changelog
-#cp $HOME/watch_$PKGNAME /tmp/work/$DIR/debian/watch
-uscan --verbose --report --watch $HOME/watch_$PKGNAME
+uscan --report --watch $HOME/watch_$PKGNAME | tee $CAP_USCAN 
+NEWVER=$(grep "Newest version" $CAP_USCAN | cut -d',' -f1 | rev | cut -d' ' -f1 | rev)
+sed -i "s|${VER}|${NEWVER}|g" $PRPSRC
+
+echo ==========================================================
+echo "prepare_source : "
+echo '##############'
+cat $PRPSRC
+echo ==========================================================
 #rm -rf /tmp/work/$DIR
