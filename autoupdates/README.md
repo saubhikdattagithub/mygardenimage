@@ -21,7 +21,7 @@ Problem: We have repositories with pinned versions of upstream packages. We need
  * Above are the packages which has pinned versions of the package to pull from upstream url's
 
 
-## ⚙️ Solution
+## ⚙️ Solution (Probable)
 
  * A tool "uscan" fetches the upstream source to compare newer versions compared to the current one
  * Requisites for uscan
