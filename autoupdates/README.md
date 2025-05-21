@@ -51,3 +51,4 @@ Problem: We have repositories with pinned versions of upstream packages. We need
 --
 
 ## Screenshot
+  ![Screenshot](run_uscan.jpg)
