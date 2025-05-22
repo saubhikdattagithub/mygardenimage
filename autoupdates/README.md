@@ -57,6 +57,9 @@ Problem: We have repositories with pinned versions of upstream packages. We need
   - https://github.com/saubhikdattagithub/mygardenimage/tree/main/package-oras
   - https://github.com/saubhikdattagithub/mygardenimage/tree/main/package-usr-is-merged 
 
+
+## Watch file templates for each package
+
 |            Package            |   Version   |                                                   Watch file                                                      |
 |:-----------------------------:|:-----------:|:-----------------------------------------------------------------------------------------------------------------:|
 | ignition-legacy               | 2.21.0      | [watch_ignition_legacy](https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_ignition-legacy)                 |
