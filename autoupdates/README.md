@@ -30,7 +30,7 @@ Problem: We have repositories with pinned versions of upstream packages. We need
    *  debian/changelog
      *  Formatted header with current version which uscan reads and compares from upstream/source
   
-## Working 
+## Working for uscan understanding
    - The shell script creates a temporary directory in /tmp independent of the production space
    - Execution works with passing the package name as first argument 
    - Forks the git repo of the package with corresponding repo URL/package names
@@ -41,14 +41,32 @@ Problem: We have repositories with pinned versions of upstream packages. We need
    - Uscan executes with customised watch and debiaan/changelog to determine the availability of new version
    - If no new version found, exits, else if a newer version is found, then edits the prepare_source file with new version determined from uscan run.
 
+## Proposal for gardenlinux/package-YYYY
+  - In existing package-YYYY repositories, we need to include a watch file as a bare minimum
+  - For uscan execution, debian/changelog is expected too, which is temporarily created and then removed by the update_version.py
+  - The watch file format for every package could be recorded as template as in below table (only for sample now in git)
+  - Info: The watch file is very specific and customised based on:
+    - mode + formatting
+    - version regex in the way of tags (Eg: refs/tags/vXYZ, /refs/tags/debian/4.XYZ etc)  
+    - URL of upstream
+    - restriction of major release by control in watch file
+
+ ## Proposal packages with watch file:
+  - https://github.com/saubhikdattagithub/mygardenimage/package-ignition-legacy
+  - https://github.com/saubhikdattagithub/mygardenimage/package-datefudge
+  - https://github.com/saubhikdattagithub/mygardenimage/package-oras
+  - https://github.com/saubhikdattagithub/mygardenimage/package-usr-is-merged 
+
+
+## Watch file templates for each package
 
 |            Package            |   Version   |                                                   Watch file                                                      |
 |:-----------------------------:|:-----------:|:-----------------------------------------------------------------------------------------------------------------:|
-| ignition-legacy               | 2.21.0      | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_ignition-legacy                   |
-| datefudge                     | 1.26        | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_datefudge                         |
-| google-compute-engine-oslogin | 20250123.00 | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_google-compute-engine-oslogin     |
-| python                        | 3.12.2      | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_python3.12                     
+| ignition-legacy               | 2.21.0      | [watch_ignition_legacy](https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_ignition-legacy)                 |
+| datefudge                     | 1.26        | [watch_datefudge](https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_datefudge)                       |
+| google-compute-engine-oslogin | 20250123.00 | [watch_google-compute-engine-oslogin](https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_google-compute-engine-oslogin)   |
+| python                        | 3.12.2      | [watch_python](https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_python3.12)             |
+| oras                          | 1.2.0       | [watch_oras](https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_oras)             |
+| usr-is-merged                 | 39          | [watch_usr-is-merged](https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_usr-is-merged)             |
 --
 
-## Screenshot
-  ![Screenshot](run_uscan.jpg)
