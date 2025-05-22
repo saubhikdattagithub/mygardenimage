@@ -3,4 +3,4 @@ opts=\
   filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/ignition-$1\.tar\.gz/,\
   uversionmangle=s/^v// \
 https://github.com/coreos/ignition/releases \
-.*/v?(\d[\d\.]+)\.tar\.gz
+.*/v?(2[\d\.]+)\.tar\.gz

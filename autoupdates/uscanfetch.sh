@@ -21,8 +21,8 @@ git clone $REPOURL
 cd $REPONAME
 echo "##Changing to Directory :" $REPONAME
 echo ----
-GETVER=$(grep version= $PRPSRC | cut -d'=' -f2 | cut -d'"' -f2 )
-GETVER_ORIG=$(grep version_orig= $PRPSRC | cut -d'=' -f2 | cut -d'"' -f2 )
+GETVER=$(grep version= $PRPSRC | cut -d'=' -f2 | cut -d'"' -f2 | cut -d"-" -f1)
+GETVER_ORIG=$(grep version_orig= $PRPSRC | cut -d'=' -f2 | cut -d'"' -f2 | cut -d"-" -f1)
 if [[ "$1" =~ "python" ]]; then 
 	GITBRVER=$(grep git_src $PRPSRC | grep github | awk '{print $3}' | sed 's#.*/##; s/^v//')
 else
@@ -61,5 +61,6 @@ else
 	exit 3
 fi
 
+#:>$CAP_USCAN 2>/dev/null
 #rm -rf /tmp/work/$DIR
-:>$CAP_USCAN
+
