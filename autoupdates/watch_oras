@@ -3,4 +3,4 @@ opts=\
   mode=git,\
   pretty=version \
   https://github.com/oras-project/oras.git \
-  refs/tags/v?(\d[\d\.]*)
+  refs/tags/v?(1\.[\d\.]*)
