@@ -52,10 +52,10 @@ Problem: We have repositories with pinned versions of upstream packages. We need
     - restriction of major release by control in watch file
 
  ## Proposal packages with watch file:
-  - https://github.com/saubhikdattagithub/mygardenimage/tree/main/package-ignition-legacy
-  - https://github.com/saubhikdattagithub/mygardenimage/tree/main/package-datefudge
-  - https://github.com/saubhikdattagithub/mygardenimage/tree/main/package-oras
-  - https://github.com/saubhikdattagithub/mygardenimage/tree/main/package-usr-is-merged 
+  - https://github.com/saubhikdattagithub/mygardenimage/package-ignition-legacy
+  - https://github.com/saubhikdattagithub/mygardenimage/package-datefudge
+  - https://github.com/saubhikdattagithub/mygardenimage/package-oras
+  - https://github.com/saubhikdattagithub/mygardenimage/package-usr-is-merged 
 
 
 ## Watch file templates for each package
