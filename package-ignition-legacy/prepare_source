@@ -1,0 +1,10 @@
+git_src --branch v2.21.0 https://github.com/coreos/ignition.git
+rm -rf "$dir/src/vendor" "$dir/src/DCO"
+# exclude what debian excludes
+tar -f "$dir/orig.tar" --delete _/vendor --delete _/DCO
+
+apt_src --ignore-orig ignition
+
+apply_patches
+version="2.21.0-0"
+message="Update to 2.21.0"
