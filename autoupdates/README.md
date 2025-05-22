@@ -44,10 +44,10 @@ Problem: We have repositories with pinned versions of upstream packages. We need
 
 |            Package            |   Version   |                                                   Watch file                                                      |
 |:-----------------------------:|:-----------:|:-----------------------------------------------------------------------------------------------------------------:|
-| ignition-legacy               | 2.21.0      | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_ignition-legacy                   |
-| datefudge                     | 1.26        | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_datefudge                         |
-| google-compute-engine-oslogin | 20250123.00 | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_google-compute-engine-oslogin     |
-| python                        | 3.12.2      | https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_python3.12                     
+| ignition-legacy               | 2.21.0      | [watch_ignition_legacy] (https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_ignition-legacy)                 |
+| datefudge                     | 1.26        | [watch_datefudge](https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_datefudge)                       |
+| google-compute-engine-oslogin | 20250123.00 | [google-compute-engine-oslogin](https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_google-compute-engine-oslogin)   |
+| python                        | 3.12.2      | [python](https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_python3.12)                     
 --
 
 ## Screenshot
