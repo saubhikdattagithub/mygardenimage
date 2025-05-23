@@ -54,14 +54,14 @@ def update_prepare_source(file_path: Path, old :str , new: str):
     content = file_path.read_text()
     updated_content = content.replace(old, new)
     file_path.write_text(updated_content)
-    print(f"Replaced all occurrences of '{old}' with '{new}' in {file_path}")
+    #print(f"Replaced all occurrences of '{old}' with '{new}' in {file_path}")
 
 
 def main():
     global current_version 
     current_version = read_current_version()
     report = run_uscan_report()
-    print(f"Output of uscan", report)
+    #print(f"Output of uscan", report)
     new_version = extract_new_version(report)
     if not new_version:
         print("No new version found.")
@@ -71,9 +71,9 @@ def main():
         print(f"No update needed: version is already {current_version}")
         sys.exit(0)
 
-    print(f"Updating version from {current_version} to {new_version}")
+    #print(f"Updating version from {current_version} to {new_version}")
     update_prepare_source(PREPARE_SOURCE, current_version , new_version)
-
+    print(new_version)
 #update_prepare_source(new_version)
 
 if __name__ == "__main__":
