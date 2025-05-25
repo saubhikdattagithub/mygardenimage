@@ -76,4 +76,4 @@ Problem: We have repositories with pinned versions of upstream packages. We need
 --
 
 ## 🧰 Conclusion
- - The Actions file automatically would create a PR with the change of VERSION in "prepare_source" file for individual packages as per the backlog requirement
+ - Actions would automatically would create a PR with the change of VERSION in "prepare_source" file for individual packages as per the backlog requirement. This has been achieved in POC using package-oras
