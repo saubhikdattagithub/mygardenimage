@@ -7,7 +7,7 @@
 - [Identification](#-identification)
 - [Proposal](#-proposal)
 - [Working for uscan understanding](#-Working-for-uscan-understanding)
-- [Proposal for gardenlinux/package-YYYY](#-Proposal-for-gardenlinux-package-YYYY)
+- [Proposal for gardenlinux-package-YYYY](#-Proposal-for-gardenlinux-package-YYYY)
 - [Proposal packages with watch file:](#-Proposal-packages-with-watch-file)
 - [Watch file templates for each package](#-Watch-file-templates-for-each-package)
 - [Conclusion](#-Conclusion)
@@ -46,7 +46,7 @@ Problem: We have repositories with pinned versions of upstream packages. We need
    - Uscan executes with customised watch and debiaan/changelog to determine the availability of new version
    - If no new version found, exits, else if a newer version is found, then edits the prepare_source file with new version determined from uscan run
 
-## 🧰 Proposal for gardenlinux/package-YYYY
+## 🧰 Proposal for gardenlinux package-YYYY
   - In existing package-YYYY repositories, we need to include a watch file as a bare minimum
   - For uscan execution, debian/changelog is expected too, which is temporarily created and then removed by the update_version.py
   - The watch file format for every package could be recorded as template as in below table (only for sample now in git)
