@@ -6,6 +6,11 @@
 - [Issue](#-issue)
 - [Identification](#-identification)
 - [Solution](#-solution)
+- [Working for uscan understanding](#-Working for uscan understanding)
+- [Proposal for gardenlinux/package-YYYY](#-Proposal for gardenlinux/package-YYYY)
+- [Proposal packages with watch file:](#-Proposal packages with watch file:)
+- [Watch file templates for each package](#-Watch file templates for each package)
+- [Conclusion](#-Conclusion)
 
 ## 🧰 Overview 
 _This space tells us about a possibility to auto update the source version using "uscan"._
@@ -70,3 +75,5 @@ Problem: We have repositories with pinned versions of upstream packages. We need
 | usr-is-merged                 | 39          | [watch_usr-is-merged](https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_usr-is-merged)             |
 --
 
+## Conclusion
+ - The Actions file automatically would create a PR with the change of VERSION in "prepare_source" file for individual packages as per the backlog requirement
