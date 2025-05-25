@@ -5,8 +5,7 @@
 - [Overview](#-overview)
 - [Issue](#-issue)
 - [Identification](#-identification)
-- [Solution](#-solution)
-  
+- [Proposal](#-proposal)
 - [Working for uscan understanding](#-Working-for-uscan-understanding)
 - [Proposal for gardenlinux/package-YYYY](#-Proposal-for-gardenlinux/package-YYYY)
 - [Proposal packages with watch file:](#-Proposal-packages-with-watch-file)
@@ -27,7 +26,7 @@ Problem: We have repositories with pinned versions of upstream packages. We need
  * Above are the packages which has pinned versions of the package to pull from upstream url's
 
 
-## 🧰 Solution (Probable)
+## 🧰 Proposal
 
  * A tool "uscan" fetches the upstream source to compare newer versions compared to the current one
  * Requisites for uscan
