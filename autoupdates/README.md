@@ -7,9 +7,9 @@
 - [Identification](#-identification)
 - [Solution](#-solution)
 - [Working for uscan understanding](#-Working for uscan understanding)
-- [Proposal for gardenlinux/package-YYYY](#-Proposal for gardenlinux/package-YYYY)
-- [Proposal packages with watch file:](#-Proposal packages with watch file:)
-- [Watch file templates for each package](#-Watch file templates for each package)
+- [Proposal for gardenlinux/package-YYYY](#-'Proposal for gardenlinux/package-YYYY')
+- [Proposal packages with watch file:](#-'Proposal packages with watch file:')
+- [Watch file templates for each package](#-'Watch file templates for each package')
 - [Conclusion](#-Conclusion)
 
 ## 🧰 Overview 
