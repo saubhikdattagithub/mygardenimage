@@ -6,6 +6,7 @@
 - [Issue](#-issue)
 - [Identification](#-identification)
 - [Solution](#-solution)
+  
 - [Working for uscan understanding](#-Working-for-uscan-understanding)
 - [Proposal for gardenlinux/package-YYYY](#-Proposal-for-gardenlinux/package-YYYY)
 - [Proposal packages with watch file:](#-Proposal-packages-with-watch-file)
@@ -26,7 +27,7 @@ Problem: We have repositories with pinned versions of upstream packages. We need
  * Above are the packages which has pinned versions of the package to pull from upstream url's
 
 
-## ⚙️ Solution (Probable)
+## 🧰 Solution (Probable)
 
  * A tool "uscan" fetches the upstream source to compare newer versions compared to the current one
  * Requisites for uscan
@@ -40,11 +41,11 @@ Problem: We have repositories with pinned versions of upstream packages. We need
    - Execution works with passing the package name as first argument 
    - Forks the git repo of the package with corresponding repo URL/package names
    - Evaluates the Current_Version of the package from prepare_source file from the package repo.
-   - This consists of fetching the current revision from various patterns in prepare_source like "version=", "version_orig"=, "git src --branch" etc
+   - This consists of fetching the current revision from various patterns in prepare_source like "version=", "version_orig"=, "git src -- branch" etc.
    - Creates debian directory and changelog file for uscan environment in /tmp/work/PACKAGE-TIMESTAMP/ directory
    - Watch file stays customised for each package in the managed repository
    - Uscan executes with customised watch and debiaan/changelog to determine the availability of new version
-   - If no new version found, exits, else if a newer version is found, then edits the prepare_source file with new version determined from uscan run.
+   - If no new version found, exits, else if a newer version is found, then edits the prepare_source file with new version determined from uscan run
 
 ## 🧰 Proposal for gardenlinux/package-YYYY
   - In existing package-YYYY repositories, we need to include a watch file as a bare minimum
@@ -75,5 +76,5 @@ Problem: We have repositories with pinned versions of upstream packages. We need
 | usr-is-merged                 | 39          | [watch_usr-is-merged](https://github.com/saubhikdattagithub/mygardenimage/blob/main/autoupdates/watch_usr-is-merged)             |
 --
 
-## Conclusion
+## 🧰 Conclusion
  - The Actions file automatically would create a PR with the change of VERSION in "prepare_source" file for individual packages as per the backlog requirement
