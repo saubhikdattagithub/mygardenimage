@@ -6,10 +6,10 @@
 - [Issue](#-issue)
 - [Identification](#-identification)
 - [Solution](#-solution)
-- [Working-for-uscan-understanding](#-Working-for-uscan-understanding)
-- [Proposal-for-gardenlinux/package-YYYY](#-Proposal-for-gardenlinux/package-YYYY)
-- [Proposal-packages-with-watch-file:](#-Proposal-packages-with-watch-file)
-- [Watch-file-templates-for-each-package](#-Watch-file-templates-for-each-package)
+- [Working for uscan understanding](#-Working-for-uscan-understanding)
+- [Proposal for gardenlinux/package-YYYY](#-Proposal-for-gardenlinux/package-YYYY)
+- [Proposal packages with watch file:](#-Proposal-packages-with-watch-file)
+- [Watch file templates for each package](#-Watch-file-templates-for-each-package)
 - [Conclusion](#-Conclusion)
 
 ## 🧰 Overview 
@@ -35,7 +35,7 @@ Problem: We have repositories with pinned versions of upstream packages. We need
    *  debian/changelog
      *  Formatted header with current version which uscan reads and compares from upstream/source
   
-## Working for uscan understanding
+## ⚙️ Working for uscan understanding
    - The shell script creates a temporary directory in /tmp independent of the production space
    - Execution works with passing the package name as first argument 
    - Forks the git repo of the package with corresponding repo URL/package names
@@ -46,7 +46,7 @@ Problem: We have repositories with pinned versions of upstream packages. We need
    - Uscan executes with customised watch and debiaan/changelog to determine the availability of new version
    - If no new version found, exits, else if a newer version is found, then edits the prepare_source file with new version determined from uscan run.
 
-## Proposal for gardenlinux/package-YYYY
+## ⚙️ Proposal for gardenlinux/package-YYYY
   - In existing package-YYYY repositories, we need to include a watch file as a bare minimum
   - For uscan execution, debian/changelog is expected too, which is temporarily created and then removed by the update_version.py
   - The watch file format for every package could be recorded as template as in below table (only for sample now in git)
@@ -56,14 +56,14 @@ Problem: We have repositories with pinned versions of upstream packages. We need
     - URL of upstream
     - restriction of major release by control in watch file
 
- ## Proposal packages with watch file:
+ ## ⚙️ Proposal packages with watch file:
   - https://github.com/saubhikdattagithub/mygardenimage/blob/main/package-ignition-legacy
   - https://github.com/saubhikdattagithub/mygardenimage/blob/main/package-datefudge
   - https://github.com/saubhikdattagithub/mygardenimage/blob/main/package-oras
   - https://github.com/saubhikdattagithub/mygardenimage/blob/main/package-usr-is-merged
 
 
-## Watch file templates for each package
+## ⚙️ Watch file templates for each package
 
 |            Package            |   Version   |                                                   Watch file                                                      |
 |:-----------------------------:|:-----------:|:-----------------------------------------------------------------------------------------------------------------:|
