@@ -1,0 +1,38 @@
+name: LIMA Qcow2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-upload:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2
+      with:
+        credentials_json: ${{ secrets.GCP_KEY }}
+
+    - name: Run QCOW2 creation script
+      run: |
+        ./build kvm-lima-amd64
+        cd ./.build
+        IMAGE_QCOW2=$(find . -mmin -20 -maxdepth 1 -type f -name "*.qcow2" -exec basename {} \;)
+      # Assume your script outputs the qcow2 image at ./output/image.qcow2
+
+    - name: Upload QCOW2 to GCP Bucket
+      run: |
+        gsutil cp "${IMAGE_QCOW2}" gs://${{ secrets.GCP_BUCKET }}/${{ secrets.IMAGE_NAME }}
+
+
+    - name: Output public URL
+      run: echo "QCOW2 uploaded to https://storage.googleapis.com/lima-images-qcow2/garden-lima-today.qcow2"
+
