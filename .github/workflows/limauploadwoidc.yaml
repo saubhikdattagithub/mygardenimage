@@ -33,7 +33,7 @@ jobs:
     - name: Set up gcloud SDK
       uses: google-github-actions/setup-gcloud@v1
       with:
-        project_id: '${{ secrets.GCP_PROJECT }}'
+        project_id: "heidelberg-417321"
         install_components: 'gsutil'
 
     # ✅ Step 3: Confirm authenticated identity
