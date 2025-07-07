@@ -26,8 +26,10 @@ jobs:
     - name: Authenticate to GCloud via OIDC
       uses: google-github-actions/auth@v1
       with:
-        workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
-        service_account: '${{ secrets.GCP_SERVICE_ACCOUNT }}'
+    #    workload_identity_provider: '${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}'
+    #    service_account: '${{ secrets.GCP_SERVICE_ACCOUNT }}'
+        workload_identity_provider: "projects/366393408502/locations/global/workloadIdentityPools/github-pool"
+        service_account: "gha-sa@heidelberg-417321.iam.gserviceaccount.com"
 
     # ✅ Step 2: Set up gcloud SDK
     - name: Set up gcloud SDK
