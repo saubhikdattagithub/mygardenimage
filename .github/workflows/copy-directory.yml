@@ -44,7 +44,7 @@ jobs:
 
       - name: Copy directory
         run: |
-          rsync -av --delete source-dir/ dest-repo/source-dir/
+          rsync -av package-oras/ dest-repo/source-dir/
 
       - name: Commit and push
         run: |
