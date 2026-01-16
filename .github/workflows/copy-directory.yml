@@ -1,0 +1,61 @@
+name: Copy directory to another repo
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY_SOURCE }}" > ~/.ssh/id_source
+          echo "${{ secrets.SSH_KEY_DEST }}" > ~/.ssh/id_dest
+          chmod 600 ~/.ssh/id_source ~/.ssh/id_dest
+
+          cat <<EOF >> ~/.ssh/config
+          Host github-source
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_source
+            IdentitiesOnly yes
+
+          Host github-dest
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_dest
+            IdentitiesOnly yes
+          EOF
+
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Clone destination repo
+        run: |
+          git clone git@github-dest:saubhik4gh/fancytest.git dest-repo
+
+      - name: Copy directory
+        run: |
+          rsync -av --delete source-dir/ dest-repo/source-dir/
+
+      - name: Commit and push
+        run: |
+          cd dest-repo
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          if git status --porcelain | grep .; then
+            git add .
+            git commit -m "Sync source-dir from source repo"
+            git push origin main
+          else
+            echo "No changes to push"
+          fi
