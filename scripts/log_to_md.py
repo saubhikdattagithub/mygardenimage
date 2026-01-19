@@ -19,8 +19,8 @@ out_file.parent.mkdir(parents=True, exist_ok=True)
 lines = log_file.read_text(errors="ignore").splitlines()
 
 with out_file.open("w") as f:
-    f.write(f"# {title} Platform Test Report (amd64)\n\n")
-    f.write("```text\n")
+    f.write(f"#v1877.0 {title}\n\n")
+    f.write("```python\n")
     for line in lines:
         f.write(line + "\n")
     f.write("```\n")
