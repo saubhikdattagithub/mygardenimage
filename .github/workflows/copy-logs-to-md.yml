@@ -1,0 +1,121 @@
+name: Sync artifacts and platform reports
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ------------------------------------------------------------
+      # Checkout source repo
+      # ------------------------------------------------------------
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # ------------------------------------------------------------
+      # Setup SSH (source + destination accounts)
+      # ------------------------------------------------------------
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY_SOURCE }}" > ~/.ssh/id_source
+          echo "${{ secrets.SSH_KEY_DEST }}" > ~/.ssh/id_dest
+          chmod 600 ~/.ssh/id_source ~/.ssh/id_dest
+
+          cat <<EOF >> ~/.ssh/config
+          Host github-source
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_source
+            IdentitiesOnly yes
+
+          Host github-dest
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/id_dest
+            IdentitiesOnly yes
+          EOF
+
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      # ------------------------------------------------------------
+      # Generate Azure markdown (dynamic find)
+      # ------------------------------------------------------------
+      - name: Generate Azure markdown
+        run: |
+          AZURE_LOG=$(find . -type f -iname "azure-gardener_prod-amd64*platform.test.log" | head -n 1)
+          [ -n "$AZURE_LOG" ] || { echo "Azure log not found"; exit 1; }
+
+          python3 scripts/log_to_md.py \
+            "$AZURE_LOG" \
+            /tmp/1877.0.azure-amd64.md \
+            Azure
+
+      # ------------------------------------------------------------
+      # Generate AWS markdown
+      # ------------------------------------------------------------
+      - name: Generate AWS markdown
+        run: |
+          AWS_LOG=$(find . -type f -iname "aws-gardener_prod-amd64*platform.test.log" | head -n 1)
+          [ -n "$AWS_LOG" ] || { echo "AWS log not found"; exit 1; }
+
+          python3 scripts/log_to_md.py \
+            "$AWS_LOG" \
+            /tmp/1877.0.aws-amd64.md \
+            AWS
+
+      # ------------------------------------------------------------
+      # Generate GCP markdown
+      # ------------------------------------------------------------
+      - name: Generate GCP markdown
+        run: |
+          GCP_LOG=$(find . -type f -iname "gcp-gardener_prod-amd64*platform.test.log" | head -n 1)
+          [ -n "$GCP_LOG" ] || { echo "GCP log not found"; exit 1; }
+
+          python3 scripts/log_to_md.py \
+            "$GCP_LOG" \
+            /tmp/1877.0.gcp-amd64.md \
+            GCP
+
+      # ------------------------------------------------------------
+      # Clone destination repo (SSH)
+      # ------------------------------------------------------------
+      - name: Clone destination repo
+        run: |
+          git clone git@github-dest:saubhik4gh/fancytest.git dest-repo
+
+      # ------------------------------------------------------------
+      # Copy directories and reports
+      # ------------------------------------------------------------
+      - name: Copy artifacts and reports
+        run: |
+          mkdir -p dest-repo/source-dir
+          mkdir -p dest-repo/archive/1877
+
+          rsync -av package-oras/ dest-repo/source-dir/
+          cp /tmp/1877.0.*.md dest-repo/archive/1877/
+
+      # ------------------------------------------------------------
+      # Commit and push (only if changes exist)
+      # ------------------------------------------------------------
+      - name: Commit and push
+        run: |
+          cd dest-repo
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          if git status --porcelain | grep .; then
+            git add .
+            git commit -m "Sync package-oras and platform test reports (1877.0, amd64)"
+            git push origin main
+          else
+            echo "No changes to push"
+          fi
