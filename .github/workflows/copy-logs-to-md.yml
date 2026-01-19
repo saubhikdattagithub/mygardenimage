@@ -136,6 +136,8 @@ jobs:
       # ------------------------------------------------------------
       - name: Copy artifacts and reports
         run: |
+          mkdir -p dest-repo/source-dir
+          mkdir -p dest-repo/archive/1877
           cp /tmp/1877.0.*.md dest-repo/archive/1877/
 
       # ------------------------------------------------------------
