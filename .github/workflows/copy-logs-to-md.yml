@@ -73,29 +73,55 @@ jobs:
             Azure
 
       # ------------------------------------------------------------
-      # Generate AWS markdown
+      # Generate AWS markdown for AMD
       # ------------------------------------------------------------
-      - name: Generate AWS markdown
+      - name: Generate AWS markdown for AMD
         run: |
-          AWS_LOG=$(find . -type f -iname "aws-gardener_prod-amd64*platform.test.log" | head -n 1)
-          [ -n "$AWS_LOG" ] || { echo "AWS log not found"; exit 1; }
+          AWS_LOG_AMD=$(find . -type f -iname "aws-gardener_prod-amd64*platform.test.log" | head -n 1)
+          [ -n "$AWS_LOG_AMD" ] || { echo "AWS log AMD not found"; exit 1; }
 
           python3 scripts/log_to_md.py \
-            "$AWS_LOG" \
+            "$AWS_LOG_AMD" \
             /tmp/1877.0.aws-amd64.md \
             AWS
 
       # ------------------------------------------------------------
-      # Generate GCP markdown
+      # Generate AWS markdown for ARM
       # ------------------------------------------------------------
-      - name: Generate GCP markdown
+      - name: Generate AWS markdown for ARM
         run: |
-          GCP_LOG=$(find . -type f -iname "gcp-gardener_prod-amd64*platform.test.log" | head -n 1)
-          [ -n "$GCP_LOG" ] || { echo "GCP log not found"; exit 1; }
+          AWS_LOG_ARM=$(find . -type f -iname "aws-gardener_prod-arm64*platform.test.log" | head -n 1)
+          [ -n "$AWS_LOG_ARM" ] || { echo "AWS log ARM not found"; exit 1; }
 
           python3 scripts/log_to_md.py \
-            "$GCP_LOG" \
+            "$AWS_LOG_ARM" \
+            /tmp/1877.0.aws-arm64.md \
+            AWS
+
+      # ------------------------------------------------------------
+      # Generate GCP markdown for AMD
+      # ------------------------------------------------------------
+      - name: Generate GCP markdown for AMD
+        run: |
+          GCP_LOG_AMD=$(find . -type f -iname "gcp-gardener_prod-amd64*platform.test.log" | head -n 1)
+          [ -n "$GCP_LOG_AMD" ] || { echo "GCP log AMD not found"; exit 1; }
+
+          python3 scripts/log_to_md.py \
+            "$GCP_LOG_AMD" \
             /tmp/1877.0.gcp-amd64.md \
+            GCP
+
+      # ------------------------------------------------------------
+      # Generate GCP markdown for ARM
+      # ------------------------------------------------------------
+      - name: Generate GCP markdown for ARM
+        run: |
+          GCP_LOG_ARM=$(find . -type f -iname "gcp-gardener_prod-arm64*platform.test.log" | head -n 1)
+          [ -n "$GCP_LOG_ARM" ] || { echo "GCP log ARM not found"; exit 1; }
+
+          python3 scripts/log_to_md.py \
+            "$GCP_LOG_ARM" \
+            /tmp/1877.0.gcp-arm64.md \
             GCP
 
       # ------------------------------------------------------------
