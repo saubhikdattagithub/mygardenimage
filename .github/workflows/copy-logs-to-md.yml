@@ -1,8 +1,7 @@
-name: Sync artifacts and platform reports
-
+name: Sync Cloud release logs
 on:
   push:
-    branches: [ main ]
+    branches: main
   workflow_dispatch:
   release:
     types: [published]
@@ -120,7 +119,7 @@ jobs:
 
           if git status --porcelain | grep .; then
             git add .
-            git commit -m "Sync package-oras and platform test reports (1877.0, amd64)"
+            git commit -m "Sync directory"
             git push origin main
           else
             echo "No changes to push"
