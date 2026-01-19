@@ -12,17 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # ------------------------------------------------------------
-      # Checkout source repo
-      # ------------------------------------------------------------
       - name: Checkout source repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      # ------------------------------------------------------------
-      # Setup SSH (source + destination accounts)
-      # ------------------------------------------------------------
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
@@ -46,9 +40,6 @@ jobs:
 
           ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-      # ------------------------------------------------------------
-      # Generate Azure markdown for AMD
-      # ------------------------------------------------------------
       - name: Generate Azure markdown for AMD
         run: |
           AZURE_LOG_AMD=$(find . -type f -iname "azure-gardener_prod-amd64*platform.test.log" | head -n 1)
@@ -59,9 +50,6 @@ jobs:
             /tmp/1877.0.azure-amd64.md \
             Azure
 
-      # ------------------------------------------------------------
-      # Generate Azure markdown for ARM
-      # ------------------------------------------------------------
       - name: Generate Azure markdown for ARM
         run: |
           AZURE_LOG_ARM=$(find . -type f -iname "azure-gardener_prod-arm64*platform.test.log" | head -n 1)
@@ -72,9 +60,6 @@ jobs:
             /tmp/1877.0.azure-arm64.md \
             Azure
 
-      # ------------------------------------------------------------
-      # Generate AWS markdown for AMD
-      # ------------------------------------------------------------
       - name: Generate AWS markdown for AMD
         run: |
           AWS_LOG_AMD=$(find . -type f -iname "aws-gardener_prod-amd64*platform.test.log" | head -n 1)
@@ -85,9 +70,6 @@ jobs:
             /tmp/1877.0.aws-amd64.md \
             AWS
 
-      # ------------------------------------------------------------
-      # Generate AWS markdown for ARM
-      # ------------------------------------------------------------
       - name: Generate AWS markdown for ARM
         run: |
           AWS_LOG_ARM=$(find . -type f -iname "aws-gardener_prod-arm64*platform.test.log" | head -n 1)
@@ -98,9 +80,6 @@ jobs:
             /tmp/1877.0.aws-arm64.md \
             AWS
 
-      # ------------------------------------------------------------
-      # Generate GCP markdown for AMD
-      # ------------------------------------------------------------
       - name: Generate GCP markdown for AMD
         run: |
           GCP_LOG_AMD=$(find . -type f -iname "gcp-gardener_prod-amd64*platform.test.log" | head -n 1)
@@ -111,9 +90,6 @@ jobs:
             /tmp/1877.0.gcp-amd64.md \
             GCP
 
-      # ------------------------------------------------------------
-      # Generate GCP markdown for ARM
-      # ------------------------------------------------------------
       - name: Generate GCP markdown for ARM
         run: |
           GCP_LOG_ARM=$(find . -type f -iname "gcp-gardener_prod-arm64*platform.test.log" | head -n 1)
@@ -124,16 +100,10 @@ jobs:
             /tmp/1877.0.gcp-arm64.md \
             GCP
 
-      # ------------------------------------------------------------
-      # Clone destination repo (SSH)
-      # ------------------------------------------------------------
       - name: Clone destination repo
         run: |
           git clone git@github-dest:saubhik4gh/fancytest.git dest-repo
 
-      # ------------------------------------------------------------
-      # Copy directories and reports
-      # ------------------------------------------------------------
       - name: Copy artifacts and reports
         run: |
           mkdir -p dest-repo/source-dir
@@ -142,9 +112,6 @@ jobs:
           rsync -av package-oras/ dest-repo/source-dir/
           cp /tmp/1877.0.*.md dest-repo/archive/1877/
 
-      # ------------------------------------------------------------
-      # Commit and push (only if changes exist)
-      # ------------------------------------------------------------
       - name: Commit and push
         run: |
           cd dest-repo
