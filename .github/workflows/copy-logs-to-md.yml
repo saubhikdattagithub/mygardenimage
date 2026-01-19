@@ -47,42 +47,81 @@ jobs:
           ssh-keyscan github.com >> ~/.ssh/known_hosts
 
       # ------------------------------------------------------------
-      # Generate Azure markdown (dynamic find)
+      # Generate Azure markdown for AMD
       # ------------------------------------------------------------
-      - name: Generate Azure markdown
+      - name: Generate Azure markdown for AMD
         run: |
-          AZURE_LOG=$(find . -type f -iname "azure-gardener_prod-amd64*platform.test.log" | head -n 1)
-          [ -n "$AZURE_LOG" ] || { echo "Azure log not found"; exit 1; }
+          AZURE_LOG_AMD=$(find . -type f -iname "azure-gardener_prod-amd64*platform.test.log" | head -n 1)
+          [ -n "$AZURE_LOG_AMD" ] || { echo "Azure log AMD not found"; exit 1; }
 
           python3 scripts/log_to_md.py \
-            "$AZURE_LOG" \
+            "$AZURE_LOG_AMD" \
             /tmp/1877.0.azure-amd64.md \
             Azure
 
       # ------------------------------------------------------------
-      # Generate AWS markdown
+      # Generate Azure markdown for ARM
       # ------------------------------------------------------------
-      - name: Generate AWS markdown
+      - name: Generate Azure markdown for ARM
         run: |
-          AWS_LOG=$(find . -type f -iname "aws-gardener_prod-amd64*platform.test.log" | head -n 1)
-          [ -n "$AWS_LOG" ] || { echo "AWS log not found"; exit 1; }
+          AZURE_LOG_ARM=$(find . -type f -iname "azure-gardener_prod-arm64*platform.test.log" | head -n 1)
+          [ -n "$AZURE_LOG_ARM" ] || { echo "Azure log ARM not found"; exit 1; }
 
           python3 scripts/log_to_md.py \
-            "$AWS_LOG" \
+            "$AZURE_LOG_ARM" \
+            /tmp/1877.0.azure-arm64.md \
+            Azure          
+
+      # ------------------------------------------------------------
+      # Generate AWS markdown for AMD
+      # ------------------------------------------------------------
+      - name: Generate AWS markdownm for AMD
+        run: |
+          AWS_LOG_AMD=$(find . -type f -iname "aws-gardener_prod-amd64*platform.test.log" | head -n 1)
+          [ -n "$AWS_LOG_AMD" ] || { echo "AWS log AMD not found"; exit 1; }
+
+          python3 scripts/log_to_md.py \
+            "$AWS_LOG_AMD" \
             /tmp/1877.0.aws-amd64.md \
+            AWS
+
+      # ------------------------------------------------------------
+      # Generate AWS markdown for ARM
+      # ------------------------------------------------------------
+      - name: Generate AWS markdown for ARM
+        run: |
+          AWS_LOG_ARM=$(find . -type f -iname "aws-gardener_prod-arm64*platform.test.log" | head -n 1)
+          [ -n "$AWS_LOG_ARM" ] || { echo "AWS log ARM not found"; exit 1; }
+
+          python3 scripts/log_to_md.py \
+            "$AWS_LOG_ARM" \
+            /tmp/1877.0.aws-arm64.md \
             AWS
 
       # ------------------------------------------------------------
       # Generate GCP markdown
       # ------------------------------------------------------------
-      - name: Generate GCP markdown
+      - name: Generate GCP markdown for AMD
         run: |
-          GCP_LOG=$(find . -type f -iname "gcp-gardener_prod-amd64*platform.test.log" | head -n 1)
-          [ -n "$GCP_LOG" ] || { echo "GCP log not found"; exit 1; }
+          GCP_LOG_AMD=$(find . -type f -iname "gcp-gardener_prod-amd64*platform.test.log" | head -n 1)
+          [ -n "$GCP_LOG_AMD" ] || { echo "GCP log AMD not found"; exit 1; }
 
           python3 scripts/log_to_md.py \
-            "$GCP_LOG" \
+            "$GCP_LOG_AMD" \
             /tmp/1877.0.gcp-amd64.md \
+            GCP
+
+      # ------------------------------------------------------------
+      # Generate GCP markdown
+      # ------------------------------------------------------------
+      - name: Generate GCP markdown for ARM
+        run: |
+          GCP_LOG_ARM=$(find . -type f -iname "gcp-gardener_prod-arm64*platform.test.log" | head -n 1)
+          [ -n "$GCP_LOG_ARM" ] || { echo "GCP log ARM not found"; exit 1; }
+
+          python3 scripts/log_to_md.py \
+            "$GCP_LOG_ARM" \
+            /tmp/1877.0.gcp-arm64.md \
             GCP
 
       # ------------------------------------------------------------
@@ -97,10 +136,6 @@ jobs:
       # ------------------------------------------------------------
       - name: Copy artifacts and reports
         run: |
-          mkdir -p dest-repo/source-dir
-          mkdir -p dest-repo/archive/1877
-
-          rsync -av package-oras/ dest-repo/source-dir/
           cp /tmp/1877.0.*.md dest-repo/archive/1877/
 
       # ------------------------------------------------------------
