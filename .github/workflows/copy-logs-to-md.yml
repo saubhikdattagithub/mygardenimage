@@ -111,16 +111,21 @@ jobs:
           rsync -av package-oras/ dest-repo/source-dir/
           cp /tmp/1877.0.*.md dest-repo/archive/1877/
 
-      - name: Commit and push
+      - name: Commit and push (to sync branch)
         run: |
           cd dest-repo
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-
+          
+          BRANCH="sync-${GITHUB_RUN_ID}"
+          echo "Using branch: $BRANCH"
+          
+          git checkout -b "$BRANCH"
+          
           if git status --porcelain | grep .; then
             git add .
             git commit -m "Sync directory"
-            git push origin main
+            git push origin "$BRANCH"
           else
-            echo "No changes to push"
+            echo "No changes to commit"
           fi
