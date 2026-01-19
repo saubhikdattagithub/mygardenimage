@@ -1,0 +1,129 @@
+🧪  running tests with args: ./run_tests --junit-xml=/dev/virtio-ports/test_junit --metadata Artifact metal-gardener_prod-arm64 --metadata Type qemu --metadata Namespace test-ng --system-booted --allow-system-modifications --skip-performance-metrics
+[1m================================================= test session starts ==================================================[0m
+platform linux -- Python 3.13.5, pytest-8.4.2, pluggy-1.6.0
+rootdir: /run/gardenlinux-tests/tests
+plugins: metadata-3.1.1
+collected 57 items
+
+test_basics.py [32m.[0m[32m.[0m[32m.[0m[33ms[0m[32m.[0m[33ms[0m[33m                                                                                            [ 10%][0m
+test_containers.py [32m.[0m[32m.[0m[33m                                                                                            [ 14%][0m
+test_network.py [32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33ms[0m[33m                                                                                         [ 28%][0m
+test_nodejs.py [33ms[0m[33ms[0m[33m                                                                                                [ 31%][0m
+test_nvme.py [32m.[0m[32m.[0m[33m                                                                                                  [ 35%][0m
+test_packages.py [32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33m                                                                                          [ 45%][0m
+test_password_hashes.py [32m.[0m[32m.[0m[33m                                                                                       [ 49%][0m
+test_proc.py [32m.[0m[32m.[0m[33m                                                                                                  [ 52%][0m
+test_sapmachine.py [33ms[0m[33ms[0m[33ms[0m[33m                                                                                           [ 57%][0m
+test_ssh.py [32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33ms[0m[32m.[0m[33m                                                                                        [ 80%][0m
+test_users.py [32m.[0m[32m.[0m[32m.[0m[33m                                                                                                [ 85%][0m
+test_vmware.py [33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33m                                                                                          [100%][0m
+
+[33m=================================================== warnings summary ===================================================[0m
+../runtime/aarch64/lib/python3.13/site-packages/_pytest/config/__init__.py:833
+  /run/gardenlinux-tests/runtime/aarch64/lib/python3.13/site-packages/_pytest/config/__init__.py:833: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; plugins.systemd
+    self.import_plugin(import_spec)
+
+../runtime/aarch64/lib/python3.13/site-packages/_pytest/config/__init__.py:833
+  /run/gardenlinux-tests/runtime/aarch64/lib/python3.13/site-packages/_pytest/config/__init__.py:833: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; plugins.modify
+    self.import_plugin(import_spec)
+
+../runtime/aarch64/lib/python3.13/site-packages/_pytest/config/__init__.py:833
+  /run/gardenlinux-tests/runtime/aarch64/lib/python3.13/site-packages/_pytest/config/__init__.py:833: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; plugins.shell
+    self.import_plugin(import_spec)
+
+../runtime/aarch64/lib/python3.13/site-packages/_pytest/config/__init__.py:833
+  /run/gardenlinux-tests/runtime/aarch64/lib/python3.13/site-packages/_pytest/config/__init__.py:833: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; plugins.booted
+    self.import_plugin(import_spec)
+
+plugins/password_hashes.py:54
+  /run/gardenlinux-tests/tests/plugins/password_hashes.py:54: SyntaxWarning: invalid escape sequence '\]'
+    Handles escaped brackets (\]) as literals.
+
+test_password_hashes.py:4
+  /run/gardenlinux-tests/tests/test_password_hashes.py:4: PytestUnknownMarkWarning: Unknown pytest.mark.security_id - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.security_id(325)
+
+test_password_hashes.py:18
+  /run/gardenlinux-tests/tests/test_password_hashes.py:18: PytestUnknownMarkWarning: Unknown pytest.mark.security_id - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.security_id(325)
+
+../runtime/aarch64/lib/python3.13/site-packages/_pytest/cacheprovider.py:475
+  /run/gardenlinux-tests/runtime/aarch64/lib/python3.13/site-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: could not create cache path /run/gardenlinux-tests/tests/.pytest_cache/v/cache/nodeids: [Errno 30] Read-only file system: '/run/gardenlinux-tests/tests/pytest-cache-files-yyeq08ue'
+    config.cache.set("cache/nodeids", sorted(self.cached_nodeids))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================================================== PASSES ========================================================
+[32m[1m__________________________________________________ test_nvme_locally ___________________________________________________[0m
+------------------------------------------------ Captured stdout setup -------------------------------------------------
+connecting to device: nvme0
+Discarding device blocks:      0/131072             done                            
+Creating filesystem with 131072 4k blocks and 32768 inodes
+Filesystem UUID: 76508153-736c-4eee-b74d-095ba785f190
+Superblock backups stored on blocks: 
+	32768, 98304
+
+Allocating group tables: 0/4   done                            
+Writing inode tables: 0/4   done                            
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information: 0/4   done
+
+foo
+------------------------------------------------ Captured stderr setup -------------------------------------------------
+mke2fs 1.47.2 (1-Jan-2025)
+----------------------------------------------- Captured stdout teardown -----------------------------------------------
+Teardown nvme device and clean up
+NQN:testnqn disconnected 1 controller(s)
+----------------------------------- generated xml file: /dev/virtio-ports/test_junit -----------------------------------
+[36m[1m=============================================== short test summary info ================================================[0m
+[32mPASSED[0m test_basics.py::[1mtest_gl_is_support_distro[0m
+[32mPASSED[0m test_basics.py::[1mtest_no_man[0m
+[32mPASSED[0m test_basics.py::[1mtest_fhs[0m
+[32mPASSED[0m test_basics.py::[1mtest_kernel_not_tainted[0m
+[32mPASSED[0m test_containers.py::[1mtest_basic_container_functionality[docker.io/library/busybox:latest][0m
+[32mPASSED[0m test_containers.py::[1mtest_basic_container_functionality[public.ecr.aws/docker/library/busybox:unstable-uclibc][0m
+[32mPASSED[0m test_network.py::[1mtest_loopback_interface[0m
+[32mPASSED[0m test_network.py::[1mtest_local_tcp_stack[2-127.0.0.1][0m
+[32mPASSED[0m test_network.py::[1mtest_local_tcp_stack[10-::1][0m
+[32mPASSED[0m test_network.py::[1mtest_local_udp_stack[2-127.0.0.1][0m
+[32mPASSED[0m test_network.py::[1mtest_local_udp_stack[10-::1][0m
+[32mPASSED[0m test_network.py::[1mtest_resolv_conf_exists[0m
+[32mPASSED[0m test_network.py::[1mtest_no_default_drop_policy[0m
+[32mPASSED[0m test_nvme.py::[1mtest_kernel_module_availability[nvme-tcp][0m
+[32mPASSED[0m test_nvme.py::[1mtest_nvme_locally[0m
+[32mPASSED[0m test_packages.py::[1mtest_no_denylisted_packages[rlogin][0m
+[32mPASSED[0m test_packages.py::[1mtest_no_denylisted_packages[rsh][0m
+[32mPASSED[0m test_packages.py::[1mtest_no_denylisted_packages[rcp][0m
+[32mPASSED[0m test_packages.py::[1mtest_no_denylisted_packages[telnet][0m
+[32mPASSED[0m test_packages.py::[1mtest_no_denylisted_packages[libdb5.3][0m
+[32mPASSED[0m test_packages.py::[1mtest_no_denylisted_packages[libssl1.1][0m
+[32mPASSED[0m test_password_hashes.py::[1mtest_password_entry_present[0m
+[32mPASSED[0m test_password_hashes.py::[1mtest_password_entry_uses_strong_hash[0m
+[32mPASSED[0m test_proc.py::[1mtest_image_proc_is_empty[0m
+[32mPASSED[0m test_proc.py::[1mtest_running_proc_is_not_empty[0m
+[32mPASSED[0m test_ssh.py::[1mtest_sshd_has_required_config[HostKey][0m
+[32mPASSED[0m test_ssh.py::[1mtest_sshd_has_required_config[KexAlgorithms][0m
+[32mPASSED[0m test_ssh.py::[1mtest_sshd_has_required_config[Ciphers][0m
+[32mPASSED[0m test_ssh.py::[1mtest_sshd_has_required_config[MACs][0m
+[32mPASSED[0m test_ssh.py::[1mtest_sshd_has_required_config[AuthenticationMethods][0m
+[32mPASSED[0m test_ssh.py::[1mtest_sshd_has_required_config[LogLevel][0m
+[32mPASSED[0m test_ssh.py::[1mtest_sshd_has_required_config[Subsystem][0m
+[32mPASSED[0m test_ssh.py::[1mtest_sshd_has_required_config[PermitRootLogin][0m
+[32mPASSED[0m test_ssh.py::[1mtest_sshd_has_required_config[X11Forwarding][0m
+[32mPASSED[0m test_ssh.py::[1mtest_sshd_has_required_config[UsePAM][0m
+[32mPASSED[0m test_ssh.py::[1mtest_users_have_no_authorized_keys[0m
+[32mPASSED[0m test_ssh.py::[1mtest_ssh_unit_running[0m
+[32mPASSED[0m test_users.py::[1mtest_service_accounts_have_nologin_shell[0m
+[32mPASSED[0m test_users.py::[1mtest_root_home_permissions[0m
+[32mPASSED[0m test_users.py::[1mtest_no_extra_home_directories[0m
+[33mSKIPPED[0m [1] test_basics.py:42: skipping performance metric tests
+[33mSKIPPED[0m [1] test_basics.py:67: excluded by feature condition: not gcp and not metal and not openstack (reason: Not compatible, usually because of missing external backends)
+[33mSKIPPED[0m [1] test_network.py:95: excluded by feature condition: azure
+[33mSKIPPED[0m [1] test_nodejs.py:6: excluded by feature condition: nodejs
+[33mSKIPPED[0m [1] test_nodejs.py:14: excluded by feature condition: nodejs
+[33mSKIPPED[0m [1] test_sapmachine.py:7: excluded by feature condition: sapmachine
+[33mSKIPPED[0m [1] test_sapmachine.py:14: excluded by feature condition: sapmachine
+[33mSKIPPED[0m [1] test_sapmachine.py:20: excluded by feature condition: sapmachine
+[33mSKIPPED[0m [1] test_ssh.py:86: excluded by feature condition: ssh and (ali or aws or azure or openstack) (reason: ALI, AWS, Azure and OpenStack auto generate authorized_keys for root with a hint to use another user)
+[33mSKIPPED[0m [3] test_vmware.py:16: excluded by feature condition: vmware
+[33mSKIPPED[0m [5] test_vmware.py:24: excluded by feature condition: vmware
+[33m===================================== [32m40 passed[0m, [33m[1m17 skipped[0m, [33m[1m8 warnings[0m[33m in 30.13s[0m[33m ======================================[0m

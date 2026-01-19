@@ -1,0 +1,914 @@
+make: Entering directory '/home/runner/work/gardenlinux/gardenlinux/tests'
+podman run -it --rm -v /home/runner/work/gardenlinux/gardenlinux:/gardenlinux -v ~/.ssh:/root/.ssh:ro ghcr.io/gardenlinux/gardenlinux/platform-test-tofu:latest pytest --provisioner=manual --configfile=/gardenlinux/tests/config/pytest.manual.aws-gardener_prod_trustedboot-amd64.yaml --junit-xml=/gardenlinux/tests/aws-gardener_prod_trustedboot-amd64.platform.test.xml --metadata Artifact aws-gardener_prod_trustedboot-amd64 --metadata Type platform --metadata Namespace test; 
+time="2025-10-07T16:28:37Z" level=warning msg="The input device is not a TTY. The --tty and --interactive flags might not work properly"
+[1m============================= test session starts ==============================[0m
+platform linux -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0 -- /opt/python-test-env/.venv/bin/python
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.7', 'Platform': 'Linux-6.11.0-1018-azure-x86_64-with-glibc2.41', 'Packages': {'pytest': '8.4.2', 'pluggy': '1.6.0'}, 'Artifact': 'aws-gardener_prod_trustedboot-amd64', 'Type': 'platform', 'Namespace': 'test', 'Plugins': {'json-report': '1.5.0', 'rerunfailures': '16.0.1', 'metadata': '3.1.1'}}
+rootdir: /gardenlinux/tests
+configfile: pytest.ini
+testpaths: ../features, platform, local
+plugins: json-report-1.5.0, rerunfailures-16.0.1, metadata-3.1.1
+[1mcollecting ... [0m[1mcollecting 131 items                                                           [0m[1mcollected 184 items                                                            [0m
+
+_bfpxe/test/test_capabilities.py::test_capabilities <- helper/tests/capabilities.py [33mSKIPPED[0m[33m [  0%][0m
+_bfpxe/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [  1%][0m
+_dev/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [  1%][0m
+_iso/test/test_capabilities.py::test_capabilities <- helper/tests/capabilities.py [33mSKIPPED[0m[33m [  2%][0m
+_iso/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [  2%][0m
+_pxe/test/test_capabilities.py::test_capabilities <- helper/tests/capabilities.py [33mSKIPPED[0m[33m [  3%][0m
+_pxe/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [  3%][0m
+_selinux/test/test_kernel_cmdline.py::test_kernel_cmdline[/etc/kernel/cmdline-security=selinux] <- ../features/_selinux/test/test_kernel_cmdline.py [33mSKIPPED[0m[33m [  4%][0m
+_selinux/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [  4%][0m
+aide/test/test_aide_cron.py::test_aide_cron <- ../features/aide/test/test_aide_cron.py [33mSKIPPED[0m[33m [  5%][0m
+aide/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [  5%][0m
+ali/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [  6%][0m
+ali/test/test_users.py::test_users <- ../features/ali/test/test_users.py [33mSKIPPED[0m[33m [  7%][0m
+aws/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py 
+[1m-------------------------------- live log setup --------------------------------[0m
+[32mINFO    [0m conftest:conftest.py:235 Testconfig for provisioner='manual' is {'features': ['log', 'sap', 'ssh', '_ephemeral', '_fwcfg', '_nopkg', '_prod', '_slim', 'base', 'server', 'cloud', 'aws', 'multipath', 'iscsi', 'nvme', 'gardener', '_usi', '_trustedboot'], 'host': '3.66.224.1', 'platform': 'aws', 'ssh': {'ssh_key_filepath': '~/.ssh/id_ed25519', 'user': 'admin'}}
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:255 Attempting to establish an SSH connection to 3.66.224.1:22...
+[32mINFO    [0m paramiko.transport:transport.py:1938 Connected (version 2.0, client OpenSSH_10.0p2)
+[32mINFO    [0m paramiko.transport:transport.py:1938 Authentication (publickey) successful!
+[32mINFO    [0m helper.sshclient:sshclient.py:270 Waiting for systemd to complete system initialization...
+[32mINFO    [0m helper.sshclient:sshclient.py:277 System initialization complete
+[32mPASSED[0m[33m                                                                   [  7%][0m
+aws/test/test_users.py::test_users <- ../features/aws/test/test_users.py [32mPASSED[0m[33m [  8%][0m
+azure/test/test_azure_times.py::test_startup_time <- ../features/azure/test/test_azure_times.py [33mSKIPPED[0m[33m [  8%][0m
+azure/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [  9%][0m
+azure/test/test_users.py::test_users <- ../features/azure/test/test_users.py [33mSKIPPED[0m[33m [  9%][0m
+base/test/test_basics.py::test_gl_is_support_distro <- ../features/base/test/test_basics.py [32mPASSED[0m[33m [ 10%][0m
+base/test/test_basics.py::test_no_man <- ../features/base/test/test_basics.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ man ls
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=127
+[32mINFO    [0m helper.sshclient:sshclient.py:482 bash: line 1: man: command not found
+[32mPASSED[0m[33m                                                                   [ 10%][0m
+base/test/test_basics.py::test_ls <- ../features/base/test/test_basics.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ ls /
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 bin
+                                           boot
+                                           dev
+                                           efi
+                                           etc
+                                           home
+                                           lib
+                                           lib64
+                                           media
+                                           mnt
+                                           opt
+                                           proc
+                                           root
+                                           run
+                                           sbin
+                                           srv
+                                           sys
+                                           tmp
+                                           usr
+                                           var
+[32mPASSED[0m[33m                                                                   [ 11%][0m
+base/test/test_basics.py::test_startup_time <- ../features/base/test/test_basics.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ systemd-analyze
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 Startup finished in 3.154s (kernel) + 7.258s (initrd) + 8min 11.104s (userspace) = 8min 21.517s 
+                                           graphical.target reached after 8min 10.379s in userspace.
+[32mPASSED[0m[33m                                                                   [ 11%][0m
+base/test/test_basics.py::test_startup_script <- ../features/base/test/test_basics.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ test -f /tmp/startup-script-ok
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 
+[32mPASSED[0m[33m                                                                   [ 12%][0m
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[rlogin] <- ../features/base/test/test_blacklisted_packages.py [32mPASSED[0m[33m [ 13%][0m
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[rsh] <- ../features/base/test/test_blacklisted_packages.py [32mPASSED[0m[33m [ 13%][0m
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[rcp] <- ../features/base/test/test_blacklisted_packages.py [32mPASSED[0m[33m [ 14%][0m
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[telnet] <- ../features/base/test/test_blacklisted_packages.py [32mPASSED[0m[33m [ 14%][0m
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[libdb5.3:amd64] <- ../features/base/test/test_blacklisted_packages.py [32mPASSED[0m[33m [ 15%][0m
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[libdb5.3:arm64] <- ../features/base/test/test_blacklisted_packages.py [32mPASSED[0m[33m [ 15%][0m
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[libssl1.1:amd64] <- ../features/base/test/test_blacklisted_packages.py [32mPASSED[0m[33m [ 16%][0m
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[libssl1.1:arm64] <- ../features/base/test/test_blacklisted_packages.py [32mPASSED[0m[33m [ 16%][0m
+base/test/test_debsums.py::test_debsums[exclude0] <- ../features/base/test/test_debsums.py [33mSKIPPED[0m[33m [ 17%][0m
+base/test/test_disable_sysrq.py::test_dmesg[/etc/sysctl.d/10-disable-sysrq.conf-args0] <- ../features/base/test/test_disable_sysrq.py [32mPASSED[0m[33m [ 17%][0m
+base/test/test_duplicate_uids.py::test_duplicate_uids <- helper/tests/find_dup_uids.py [32mPASSED[0m[33m [ 18%][0m
+base/test/test_groups.py::test_groups[root-user0] <- ../features/base/test/test_groups.py [32mPASSED[0m[33m [ 19%][0m
+base/test/test_groups.py::test_groups[wheel-user1] <- ../features/base/test/test_groups.py [32mPASSED[0m[33m [ 19%][0m
+base/test/test_kernel_config.py::test_nvme_kernel_parameter <- ../features/base/test/test_kernel_config.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ grep -c nvme_core.io_timeout=4294967295 /proc/cmdline
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 1
+[32mPASSED[0m[33m                                                                   [ 20%][0m
+base/test/test_metadata_connection.py::test_metadata_connection <- ../features/base/test/test_metadata_connection.py [33mSKIPPED[0m[33m [ 20%][0m
+base/test/test_metadata_connection.py::test_metadata_connection_aws <- ../features/base/test/test_metadata_connection.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ curl -sqX PUT 'http://169.254.169.254/latest/api/token'                    -H 'X-aws-ec2-metadata-token-ttl-seconds:60'
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 AQAEAFwSlPMzp3472gu0hRV--XLZnYp7ky0ij3PY3tXJ4yHBhA_pPg==
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ wget --timeout 5                --header='X-aws-ec2-metadata-token: AQAEAFwSlPMzp3472gu0hRV--XLZnYp7ky0ij3PY3tXJ4yHBhA_pPg=='                'http://169.254.169.254/'
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:482 --2025-10-07 16:28:55--  http://169.254.169.254/
+                                           Connecting to 169.254.169.254:80... connected.
+                                           HTTP request sent, awaiting response... 200 OK
+                                           Length: 307 [text/plain]
+                                           Saving to: ‘index.html’
+                                           
+                                                0K                                                       100% 53.0M=0s
+                                           
+                                           2025-10-07 16:28:55 (53.0 MB/s) - ‘index.html’ saved [307/307]
+                                           
+[32mPASSED[0m[33m                                                                   [ 21%][0m
+base/test/test_metadata_connection.py::test_metadata_connection_azure <- ../features/base/test/test_metadata_connection.py [33mSKIPPED[0m[33m [ 21%][0m
+base/test/test_metadata_connection.py::test_metadate_connection_aliyun <- ../features/base/test/test_metadata_connection.py [33mSKIPPED[0m[33m [ 22%][0m
+base/test/test_network.py::test_hostname_azure <- ../features/base/test/test_network.py [33mSKIPPED[0m[33m [ 22%][0m
+base/test/test_network.py::test_ping4[8.8.8.8] <- ../features/base/test/test_network.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ ping -c 5 -W 5 8.8.8.8
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+                                           64 bytes from 8.8.8.8: icmp_seq=1 ttl=118 time=0.759 ms
+                                           64 bytes from 8.8.8.8: icmp_seq=2 ttl=118 time=0.744 ms
+                                           64 bytes from 8.8.8.8: icmp_seq=3 ttl=118 time=0.734 ms
+                                           64 bytes from 8.8.8.8: icmp_seq=4 ttl=118 time=0.741 ms
+                                           64 bytes from 8.8.8.8: icmp_seq=5 ttl=118 time=0.747 ms
+                                           
+                                           --- 8.8.8.8 ping statistics ---
+                                           5 packets transmitted, 5 received, 0% packet loss, time 4097ms
+                                           rtt min/avg/max/mdev = 0.734/0.745/0.759/0.008 ms
+[32mPASSED[0m[33m                                                                   [ 23%][0m
+base/test/test_network.py::test_ping4[dns.google] <- ../features/base/test/test_network.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ ping -c 5 -W 5 dns.google
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 PING dns.google (8.8.8.8) 56(84) bytes of data.
+                                           64 bytes from dns.google (8.8.8.8): icmp_seq=1 ttl=118 time=0.756 ms
+                                           64 bytes from dns.google (8.8.8.8): icmp_seq=2 ttl=118 time=0.734 ms
+                                           64 bytes from dns.google (8.8.8.8): icmp_seq=3 ttl=118 time=0.732 ms
+                                           64 bytes from dns.google (8.8.8.8): icmp_seq=4 ttl=118 time=0.733 ms
+                                           64 bytes from dns.google (8.8.8.8): icmp_seq=5 ttl=118 time=0.727 ms
+                                           
+                                           --- dns.google ping statistics ---
+                                           5 packets transmitted, 5 received, 0% packet loss, time 4078ms
+                                           rtt min/avg/max/mdev = 0.727/0.736/0.756/0.010 ms
+[32mPASSED[0m[33m                                                                   [ 23%][0m
+base/test/test_network.py::test_ping4[heise.de] <- ../features/base/test/test_network.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ ping -c 5 -W 5 heise.de
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 PING heise.de (193.99.144.80) 56(84) bytes of data.
+                                           64 bytes from redirector.heise.de (193.99.144.80): icmp_seq=1 ttl=247 time=1.57 ms
+                                           64 bytes from redirector.heise.de (193.99.144.80): icmp_seq=2 ttl=247 time=1.72 ms
+                                           64 bytes from redirector.heise.de (193.99.144.80): icmp_seq=3 ttl=247 time=1.58 ms
+                                           64 bytes from redirector.heise.de (193.99.144.80): icmp_seq=4 ttl=247 time=1.91 ms
+                                           64 bytes from redirector.heise.de (193.99.144.80): icmp_seq=5 ttl=247 time=1.47 ms
+                                           
+                                           --- heise.de ping statistics ---
+                                           5 packets transmitted, 5 received, 0% packet loss, time 4007ms
+                                           rtt min/avg/max/mdev = 1.467/1.648/1.908/0.152 ms
+[32mPASSED[0m[33m                                                                   [ 24%][0m
+base/test/test_network.py::test_ping6[2001:4860:4860::8888] <- ../features/base/test/test_network.py [33mSKIPPED[0m[33m [ 25%][0m
+base/test/test_network.py::test_ping6[dns.google] <- ../features/base/test/test_network.py [33mSKIPPED[0m[33m [ 25%][0m
+base/test/test_network.py::test_ping6[heise.de] <- ../features/base/test/test_network.py [33mSKIPPED[0m[33m [ 26%][0m
+base/test/test_orphaned.py::test_orphaned <- ../features/base/test/test_orphaned.py [33mSKIPPED[0m[33m [ 26%][0m
+base/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [32mPASSED[0m[33m [ 27%][0m
+base/test/test_partition.py::test_growpart <- ../features/base/test/test_partition.py [33mSKIPPED[0m[33m [ 27%][0m
+base/test/test_password_hashes.py::test_password_hashes <- ../features/base/test/test_password_hashes.py [32mPASSED[0m[33m [ 28%][0m
+base/test/test_password_shadow.py::test_password_shadow[pwck -r-0-] <- ../features/base/test/test_password_shadow.py [32mPASSED[0m[33m [ 28%][0m
+base/test/test_password_shadow.py::test_password_shadow[grpck -r-0-] <- ../features/base/test/test_password_shadow.py [32mPASSED[0m[33m [ 29%][0m
+base/test/test_platform_driver.py::test_aws_ena_driver <- ../features/base/test/test_platform_driver.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ /sbin/ethtool -i $(ip -j link show  | jq -r '.[] | if .ifname != "lo" and .ifname != "docker0" then .ifname else empty end') | grep "^driver" | awk '{print $2}'
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 ena
+[32mPASSED[0m[33m                                                                   [ 29%][0m
+base/test/test_proc.py::test_proc <- ../features/base/test/test_proc.py [33mSKIPPED[0m[33m [ 30%][0m
+base/test/test_random.py::test_random <- ../features/base/test/test_random.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ time dd if=/dev/random of=/dev/null bs=8k count=1000 iflag=fullblock
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:482 1000+0 records in
+                                           1000+0 records out
+                                           8192000 bytes (8.2 MB, 7.8 MiB) copied, 0.0243799 s, 336 MB/s
+                                           
+                                           real	0m0.026s
+                                           user	0m0.000s
+                                           sys	0m0.026s
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ time rngtest --blockcount=9000  < /dev/random
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=1
+[32mINFO    [0m helper.sshclient:sshclient.py:482 rngtest 5
+                                           Copyright (c) 2004 by Henrique de Moraes Holschuh
+                                           This is free software; see the source for copying conditions.  There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+                                           
+                                           rngtest: starting FIPS tests...
+                                           rngtest: bits received from input: 180000032
+                                           rngtest: FIPS 140-2 successes: 8992
+                                           rngtest: FIPS 140-2 failures: 8
+                                           rngtest: FIPS 140-2(2001-10-10) Monobit: 2
+                                           rngtest: FIPS 140-2(2001-10-10) Poker: 1
+                                           rngtest: FIPS 140-2(2001-10-10) Runs: 4
+                                           rngtest: FIPS 140-2(2001-10-10) Long run: 1
+                                           rngtest: FIPS 140-2(2001-10-10) Continuous run: 0
+                                           rngtest: input channel speed: (min=596.046; avg=2337.946; max=2384.186)Mibits/s
+                                           rngtest: FIPS tests speed: (min=94.423; avg=145.526; max=149.012)Mibits/s
+                                           rngtest: Program run time: 1254091 microseconds
+                                           
+                                           real	0m1.255s
+                                           user	0m1.211s
+                                           sys	0m0.044s
+[32mPASSED[0m[33m                                                                   [ 30%][0m
+base/test/test_rkhunter.py::test_rkhunter <- helper/tests/rkhunter.py [33mSKIPPED[0m[33m [ 31%][0m
+base/test/test_sgid_suid_files.py::test_sgid_suid_files[sgid-whitelist_files0] <- ../features/base/test/test_sgid_suid_files.py [32mPASSED[0m[33m [ 32%][0m
+base/test/test_sgid_suid_files.py::test_sgid_suid_files[suid-whitelist_files1] <- ../features/base/test/test_sgid_suid_files.py [32mPASSED[0m[33m [ 32%][0m
+base/test/test_su.py::test_su_restriction <- ../features/base/test/test_su.py [32mPASSED[0m[33m [ 33%][0m
+base/test/test_systemd.py::test_systemctl_no_failed_units <- ../features/base/test/test_systemd.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ systemctl list-units --output=json --state=failed
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 []
+[32mPASSED[0m[33m                                                                   [ 33%][0m
+base/test/test_systemd.py::test_systemctl_no_failed_units_kvm <- ../features/base/test/test_systemd.py [33mSKIPPED[0m[33m [ 34%][0m
+base/test/test_tiger.py::test_tiger <- helper/tests/tiger.py [33mSKIPPED[0m[33m     [ 34%][0m
+base/test/test_time_config.py::test_correct_ntp <- ../features/base/test/test_time_config.py [33mSKIPPED[0m[33m [ 35%][0m
+base/test/test_time_config.py::test_timesync <- ../features/base/test/test_time_config.py [33mSKIPPED[0m[33m [ 35%][0m
+base/test/test_time_config.py::test_clock <- ../features/base/test/test_time_config.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ date '+%s'
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 1759854555
+[32mPASSED[0m[33m                                                                   [ 36%][0m
+base/test/test_time_config.py::test_ntp <- ../features/base/test/test_time_config.py [33mSKIPPED[0m[33m [ 36%][0m
+base/test/test_time_config.py::test_ntp_hyperscaler <- ../features/base/test/test_time_config.py [33mSKIPPED[0m[33m [ 37%][0m
+base/test/test_time_config.py::test_files_not_in_future <- ../features/base/test/test_time_config.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ cat << '__EOF'
+                                           import os
+                                           import sys
+                                           from datetime import datetime
+                                           
+                                           now = datetime.now()
+                                           dirs = ["/bin", "/etc/ssh"]
+                                           for dir in dirs:
+                                               for (dirpath, dirnames, filenames) in os.walk(dir):
+                                                   for f in filenames:
+                                                       file = os.path.join(dir, f)
+                                                       modification = datetime.fromtimestamp(os.path.getmtime(file))
+                                                       if modification > now:
+                                                           print(f"FAIL - {file}s timestamp is {modification}")
+                                                           sys.exit(1)
+                                           __EOF
+                                           
+                                            > /tmp/filemodtime-test.py
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 import os
+                                           import sys
+                                           from datetime import datetime
+                                           
+                                           now = datetime.now()
+                                           dirs = ["/bin", "/etc/ssh"]
+                                           for dir in dirs:
+                                               for (dirpath, dirnames, filenames) in os.walk(dir):
+                                                   for f in filenames:
+                                                       file = os.path.join(dir, f)
+                                                       modification = datetime.fromtimestamp(os.path.getmtime(file))
+                                                       if modification > now:
+                                                           print(f"FAIL - {file}s timestamp is {modification}")
+                                                           sys.exit(1)
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ python3 /tmp/filemodtime-test.py
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 
+[32mPASSED[0m[33m                                                                   [ 38%][0m
+base/test/test_time_config.py::test_clocksource <- ../features/base/test/test_time_config.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ systemd-detect-virt
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 amazon
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ uname -m
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 x86_64
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ cat /sys/devices/system/clocksource/clocksource0/current_clocksource
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 kvm-clock
+[32mPASSED[0m[33m                                                                   [ 38%][0m
+base/test/test_time_config.py::test_chrony <- ../features/base/test/test_time_config.py [33mSKIPPED[0m[33m [ 39%][0m
+base/test/test_umask.py::test_umask[/etc/login.defs-dict0] <- ../features/base/test/test_umask.py [32mPASSED[0m[33m [ 39%][0m
+base/test/test_umask.py::test_umask_cmd <- ../features/base/test/test_umask.py [32mPASSED[0m[33m [ 40%][0m
+base/test/test_users.py::test_users <- ../features/base/test/test_users.py [33mSKIPPED[0m[33m [ 40%][0m
+base/test/test_usr_ro.py::test_usr_read_only <- ../features/base/test/test_usr_ro.py 
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ /usr/bin/touch /usr/fail-test
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=1
+[32mINFO    [0m helper.sshclient:sshclient.py:482 touch: cannot touch '/usr/fail-test': Read-only file system
+[32mPASSED[0m[33m                                                                   [ 41%][0m
+bluefield/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [ 41%][0m
+chost/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [ 42%][0m
+chost/test/test_systemd_unit.py::test_systemd_unit[kubelet] <- ../features/chost/test/test_systemd_unit.py [33mSKIPPED[0m[33m [ 42%][0m
+cis/test/test_debian_cis.py::test_debian_cis[args0] <- ../features/cis/test/test_debian_cis.py [33mSKIPPED[0m[33m [ 43%][0m
+clamav/test/test_clamav_cron.py::test_clamav_cron <- ../features/clamav/test/test_clamav_cron.py [33mSKIPPED[0m[33m [ 44%][0m
+clamav/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [ 44%][0m
+cloud/test/test_autologout.py::test_autologout[/etc/profile.d/50-autologout.sh-dict0] <- ../features/cloud/test/test_autologout.py [32mPASSED[0m[33m [ 45%][0m
+cloud/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple0] <- ../features/cloud/test/test_kernel_config.py [32mPASSED[0m[33m [ 45%][0m
+cloud/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple1] <- ../features/cloud/test/test_kernel_config.py [32mPASSED[0m[33m [ 46%][0m
+cloud/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple2] <- ../features/cloud/test/test_kernel_config.py [32mPASSED[0m[33m [ 46%][0m
+cloud/test/test_kernel_modules.py::test_kernel_modules[wireguard] <- ../features/cloud/test/test_kernel_modules.py [32mPASSED[0m[33m [ 47%][0m
+cloud/test/test_only_one_kernel.py::test_number_installed_kernels <- ../features/cloud/test/test_only_one_kernel.py [32mPASSED[0m[33m [ 47%][0m
+cloud/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [32mPASSED[0m[33m [ 48%][0m
+fedramp/test/test_fedramp.py::test_fedramp[/gardenlinux/features/fedramp/test/test.sh] <- ../features/fedramp/test/test_fedramp.py [33mSKIPPED[0m[33m [ 48%][0m
+fedramp/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [ 49%][0m
+firewall/test/test_nft_config.py::test_nft_config <- ../features/firewall/test/test_nft_config.py [33mSKIPPED[0m[33m [ 50%][0m
+firewall/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [ 50%][0m
+firewall/test/test_systemd_units.py::test_systemd_unit[nftables] <- ../features/firewall/test/test_systemd_units.py [33mSKIPPED[0m[33m [ 51%][0m
+gardener/test/test_dmesg.py::test_dmesg[/etc/sysctl.d/40-allow-nonroot-dmesg.conf-args0] <- ../features/gardener/test/test_dmesg.py [32mPASSED[0m[33m [ 51%][0m
+gardener/test/test_dmesg.py::test_dmesg[/tmp/sysctl.txt-args1] <- ../features/gardener/test/test_dmesg.py [32mPASSED[0m[33m [ 52%][0m
+gardener/test/test_files_excluded.py::test_file_excluded <- helper/tests/files_excluded.py [32mPASSED[0m[33m [ 52%][0m
+gardener/test/test_lsm.py::test_lsm[selinux-False] <- ../features/gardener/test/test_lsm.py [32mPASSED[0m[33m [ 53%][0m
+gardener/test/test_lsm.py::test_lsm[apparmor-True] <- ../features/gardener/test/test_lsm.py [32mPASSED[0m[33m [ 53%][0m
+gardener/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [32mPASSED[0m[33m [ 54%][0m
+gardener/test/test_sysctls.py::test_sysctls[net.ipv4.conf.all.rp_filter-isnotornotset-1] <- ../features/gardener/test/test_sysctls.py [32mPASSED[0m[33m [ 54%][0m
+gardener/test/test_sysctls.py::test_sysctls[net.ipv4.conf.default.rp_filter-isnotornotset-1] <- ../features/gardener/test/test_sysctls.py [32mPASSED[0m[33m [ 55%][0m
+gardener/test/test_systemd_units.py::test_systemd_unit[containerd] <- ../features/gardener/test/test_systemd_units.py [32mPASSED[0m[33m [ 55%][0m
+gcp/test/test_blacklisted_packages.py::test_blacklisted_packages[irqbalance] <- ../features/gcp/test/test_blacklisted_packages.py [33mSKIPPED[0m[33m [ 56%][0m
+gcp/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [ 57%][0m
+gcp/test/test_users.py::test_users <- ../features/gcp/test/test_users.py [33mSKIPPED[0m[33m [ 57%][0m
+iscsi/test/test_iscsi.py::test_iscsi_setup <- ../features/iscsi/test/test_iscsi.py 
+[1m-------------------------------- live log setup --------------------------------[0m
+[32mINFO    [0m root:test_iscsi.py:13 Starting iSCSI setup test
+[32mINFO    [0m root:test_iscsi.py:36 iscsiadm login: Login to [iface: default, target: iqn.2025-04.localhost:storage.disk1, portal: 127.0.0.1,3260] successful.
+[1m-------------------------------- live log call ---------------------------------[0m
+[32mINFO    [0m root:test_iscsi.py:51 Block devices before rescan: total 0
+                               drwxr-xr-x  3 root root 120 Oct  7 16:20 .
+                               drwxr-xr-x 11 root root 220 Oct  7 16:20 ..
+                               lrwxrwxrwx  1 root root  13 Oct  7 16:20 pci-0000:00:04.0-nvme-1 -> ../../nvme0n1
+                               drwxr-xr-x  7 root root 140 Oct  7 16:20 pci-0000:00:04.0-nvme-1-part
+                               lrwxrwxrwx  1 root root  15 Oct  7 16:20 pci-0000:00:04.0-nvme-1-part1 -> ../../nvme0n1p1
+                               lrwxrwxrwx  1 root root  15 Oct  7 16:20 pci-0000:00:04.0-nvme-1-part2 -> ../../nvme0n1p2
+[32mINFO    [0m root:test_iscsi.py:63 Rescan output: Rescanning session [sid: 1, target: iqn.2025-04.localhost:storage.disk1, portal: 127.0.0.1,3260]
+[32mINFO    [0m root:test_iscsi.py:66 Block devices after rescan: total 0
+                               drwxr-xr-x  3 root root 140 Oct  7 16:29 .
+                               drwxr-xr-x 11 root root 220 Oct  7 16:20 ..
+                               lrwxrwxrwx  1 root root   9 Oct  7 16:29 ip-127.0.0.1:3260-iscsi-iqn.2025-04.localhost:storage.disk1-lun-1 -> ../../sda
+                               lrwxrwxrwx  1 root root  13 Oct  7 16:20 pci-0000:00:04.0-nvme-1 -> ../../nvme0n1
+                               drwxr-xr-x  7 root root 140 Oct  7 16:20 pci-0000:00:04.0-nvme-1-part
+                               lrwxrwxrwx  1 root root  15 Oct  7 16:20 pci-0000:00:04.0-nvme-1-part1 -> ../../nvme0n1p1
+                               lrwxrwxrwx  1 root root  15 Oct  7 16:20 pci-0000:00:04.0-nvme-1-part2 -> ../../nvme0n1p2
+[32mPASSED[0m[33m                                                                   [ 58%][0m
+iscsi/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [32mPASSED[0m[33m [ 58%][0m
+khost/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [ 59%][0m
+khost/test/test_systemd_unit.py::test_systemd_unit[kubelet] <- ../features/khost/test/test_systemd_unit.py [33mSKIPPED[0m[33m [ 59%][0m
+kvm/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [ 60%][0m
+metal/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple0] <- ../features/metal/test/test_kernel_config.py [33mSKIPPED[0m[33m [ 60%][0m
+metal/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple1] <- ../features/metal/test/test_kernel_config.py [33mSKIPPED[0m[33m [ 61%][0m
+metal/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple2] <- ../features/metal/test/test_kernel_config.py [33mSKIPPED[0m[33m [ 61%][0m
+metal/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [ 62%][0m
+nvme/test/test_kernel_modules.py::test_kernel_modules[nvme-tcp] <- ../features/nvme/test/test_kernel_modules.py [32mPASSED[0m[33m [ 63%][0m
+nvme/test/test_nvme_over_tcp_locally.py::test_nvme_locally <- ../features/nvme/test/test_nvme_over_tcp_locally.py 
+[1m-------------------------------- live log setup --------------------------------[0m
+[32mINFO    [0m root:test_nvme_over_tcp_locally.py:57 1
+                                               /tmp/nvme.img1
+                                               127.0.0.1
+                                               tcp
+                                               4420
+                                               ipv4
+                                               NVMe over Fabrics configuration is set up.
+[32mINFO    [0m root:test_nvme_over_tcp_locally.py:60 Nvme devices: [{'NameSpace': 1, 'DevicePath': '/dev/nvme0n1', 'GenericPath': '/dev/ng0n1', 'Firmware': '1.0', 'ModelNumber': 'Amazon Elastic Block Store', 'SerialNumber': 'vol0a722a2165ab9c8c6', 'UsedBytes': 17179869184, 'MaximumLBA': 33554432, 'PhysicalSize': 17179869184, 'SectorSize': 512}]
+[32mINFO    [0m root:test_nvme_over_tcp_locally.py:70 {
+                                                 "Devices":[
+                                                   {
+                                                     "NameSpace":1,
+                                                     "DevicePath":"/dev/nvme0n1",
+                                                     "GenericPath":"/dev/ng0n1",
+                                                     "Firmware":"1.0",
+                                                     "ModelNumber":"Amazon Elastic Block Store",
+                                                     "SerialNumber":"vol0a722a2165ab9c8c6",
+                                                     "UsedBytes":17179869184,
+                                                     "MaximumLBA":33554432,
+                                                     "PhysicalSize":17179869184,
+                                                     "SectorSize":512
+                                                   },
+                                                   {
+                                                     "NameSpace":1,
+                                                     "DevicePath":"/dev/nvme1n1",
+                                                     "GenericPath":"/dev/ng1n1",
+                                                     "Firmware":"6.12.49-",
+                                                     "ModelNumber":"Linux",
+                                                     "SerialNumber":"64c8daf250fae7f0372a",
+                                                     "UsedBytes":536870912,
+                                                     "MaximumLBA":131072,
+                                                     "PhysicalSize":536870912,
+                                                     "SectorSize":4096
+                                                   }
+                                                 ]
+                                               }
+[32mPASSED[0m[33m                                                                   [ 63%][0m
+nvme/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [32mPASSED[0m[33m [ 64%][0m
+openstack/test/test_check_files.py::test_check_file[/etc/cloud/ds-identify.cfg] <- ../features/openstack/test/test_check_files.py [33mSKIPPED[0m[33m [ 64%][0m
+openstack/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/01_debian-cloud.cfg] <- ../features/openstack/test/test_check_files.py [33mSKIPPED[0m[33m [ 65%][0m
+openstack/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/50-datasource.cfg] <- ../features/openstack/test/test_check_files.py [33mSKIPPED[0m[33m [ 65%][0m
+openstack/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/99_disable-network-config.cfg] <- ../features/openstack/test/test_check_files.py [33mSKIPPED[0m[33m [ 66%][0m
+openstack/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-ntp] <- ../features/openstack/test/test_content_in_file.py [33mSKIPPED[0m[33m [ 66%][0m
+openstack/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-resizefs] <- ../features/openstack/test/test_content_in_file.py [33mSKIPPED[0m[33m [ 67%][0m
+openstack/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-growpart] <- ../features/openstack/test/test_content_in_file.py [33mSKIPPED[0m[33m [ 67%][0m
+openstack/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [ 68%][0m
+openstackbaremetal/test/test_check_files.py::test_check_file[/etc/cloud/ds-identify.cfg] <- ../features/openstackbaremetal/test/test_check_files.py [33mSKIPPED[0m[33m [ 69%][0m
+openstackbaremetal/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/01_debian-cloud.cfg] <- ../features/openstackbaremetal/test/test_check_files.py [33mSKIPPED[0m[33m [ 69%][0m
+openstackbaremetal/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/50-datasource.cfg] <- ../features/openstackbaremetal/test/test_check_files.py [33mSKIPPED[0m[33m [ 70%][0m
+openstackbaremetal/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/65-network-config.cfg] <- ../features/openstackbaremetal/test/test_check_files.py [33mSKIPPED[0m[33m [ 70%][0m
+openstackbaremetal/test/test_check_files.py::test_check_file[/etc/dracut.conf.d/49-include-bnxt-drivers.conf] <- ../features/openstackbaremetal/test/test_check_files.py [33mSKIPPED[0m[33m [ 71%][0m
+openstackbaremetal/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-ntp] <- ../features/openstackbaremetal/test/test_content_in_file.py [33mSKIPPED[0m[33m [ 71%][0m
+openstackbaremetal/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-resizefs] <- ../features/openstackbaremetal/test/test_content_in_file.py [33mSKIPPED[0m[33m [ 72%][0m
+openstackbaremetal/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-growpart] <- ../features/openstackbaremetal/test/test_content_in_file.py [33mSKIPPED[0m[33m [ 72%][0m
+openstackbaremetal/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [ 73%][0m
+openstackbaremetal/test/test_users.py::test_users <- ../features/openstackbaremetal/test/test_users.py [33mSKIPPED[0m[33m [ 73%][0m
+server/test/test_autologin.py::test_autologin[/etc/systemd/system/serial-getty@.service.d/autologin.conf-args0] <- ../features/server/test/test_autologin.py [32mPASSED[0m[33m [ 74%][0m
+server/test/test_autologin.py::test_autologin[/etc/systemd/system/getty@tty1.service.d/autologin.conf-args1] <- ../features/server/test/test_autologin.py [32mPASSED[0m[33m [ 75%][0m
+server/test/test_capabilities.py::test_capabilities <- helper/tests/capabilities.py [32mPASSED[0m[33m [ 75%][0m
+server/test/test_dmesg.py::test_dmesg[/etc/sysctl.d/40-restric-dmesg.conf-args0] <- ../features/server/test/test_dmesg.py [33mSKIPPED[0m[33m [ 76%][0m
+server/test/test_dmesg.py::test_dmesg[/tmp/sysctl.txt-args1] <- ../features/server/test/test_dmesg.py [33mSKIPPED[0m[33m [ 76%][0m
+server/test/test_history.py::test_history[/etc/profile.d/50-nohistory.sh-args0] <- ../features/server/test/test_history.py [32mPASSED[0m[33m [ 77%][0m
+server/test/test_kernel_parameter.py::test_kernel_parameter[fs.protected_symlinks-1] <- ../features/server/test/test_kernel_parameter.py [32mPASSED[0m[33m [ 77%][0m
+server/test/test_kernel_parameter.py::test_kernel_parameter[fs.protected_hardlinks-1] <- ../features/server/test/test_kernel_parameter.py [32mPASSED[0m[33m [ 78%][0m
+server/test/test_kernel_parameter.py::test_kernel_parameter[kernel.randomize_va_space-2] <- ../features/server/test/test_kernel_parameter.py [32mPASSED[0m[33m [ 78%][0m
+server/test/test_machine_id.py::test_machine_id <- ../features/server/test/test_machine_id.py [33mSKIPPED[0m[33m [ 79%][0m
+server/test/test_machine_id.py::test_machine_id_powered_on <- ../features/server/test/test_machine_id.py [32mPASSED[0m[33m [ 79%][0m
+server/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [32mPASSED[0m[33m [ 80%][0m
+server/test/test_pam.py::test_pam_faillock[/etc/pam.d/common-password-password required pam_passwdqc.so min=disabled,disabled,12,8,8 passphrase=4 similar=deny retry=5] <- ../features/server/test/test_pam.py [32mPASSED[0m[33m [ 80%][0m
+server/test/test_pam.py::test_pam_faillock[/etc/pam.d/common-password-password required pam_pwhistory.so use_authtok remember=5 retry=5] <- ../features/server/test/test_pam.py [32mPASSED[0m[33m [ 81%][0m
+server/test/test_pam_faillock.py::test_pam_faillock[/etc/pam.d/common-auth-auth required pam_faillock.so preauth silent audit deny=5 unlock_time=900] <- ../features/server/test/test_pam_faillock.py [32mPASSED[0m[33m [ 82%][0m
+server/test/test_pam_faillock.py::test_pam_faillock[/etc/pam.d/common-auth-auth [default=die] pam_faillock.so authfail silent audit deny=5 unlock_time=900] <- ../features/server/test/test_pam_faillock.py [32mPASSED[0m[33m [ 82%][0m
+server/test/test_pam_faillock.py::test_pam_faillock[/etc/pam.d/common-account-account required pam_faillock.so] <- ../features/server/test/test_pam_faillock.py [32mPASSED[0m[33m [ 83%][0m
+server/test/test_reset_env_vars.py::test_reset_env_vars[/etc/sudoers-args0-True] <- ../features/server/test/test_reset_env_vars.py [32mPASSED[0m[33m [ 83%][0m
+server/test/test_systemctl.py::test_systemctl[enabled-services0] <- ../features/server/test/test_systemctl.py [32mPASSED[0m[33m [ 84%][0m
+server/test/test_systemctl.py::test_systemctl[disabled-services1] <- ../features/server/test/test_systemctl.py [32mPASSED[0m[33m [ 84%][0m
+server/test/test_tiger.py::test_tiger <- helper/tests/tiger.py [33mSKIPPED[0m[33m   [ 85%][0m
+server/test/test_users.py::test_users <- ../features/server/test/test_users.py [33mSKIPPED[0m[33m [ 85%][0m
+ssh/test/test_ssh_authorized.py::test_ssh_authorized <- helper/tests/ssh_authorized.py [33mSKIPPED[0m[33m [ 86%][0m
+ssh/test/test_sshd.py::test_sshd[HostKey /etc/ssh/ssh_host_ed25519_key] <- ../features/ssh/test/test_sshd.py [32mPASSED[0m[33m [ 86%][0m
+ssh/test/test_sshd.py::test_sshd[HostKey /etc/ssh/ssh_host_rsa_key] <- ../features/ssh/test/test_sshd.py [32mPASSED[0m[33m [ 87%][0m
+ssh/test/test_sshd.py::test_sshd[KexAlgorithms sntrup761x25519-sha512,sntrup761x25519-sha512@openssh.com,mlkem768x25519-sha256,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521] <- ../features/ssh/test/test_sshd.py [32mPASSED[0m[33m [ 88%][0m
+ssh/test/test_sshd.py::test_sshd[Ciphers chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com] <- ../features/ssh/test/test_sshd.py [32mPASSED[0m[33m [ 88%][0m
+ssh/test/test_sshd.py::test_sshd[MACs umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1] <- ../features/ssh/test/test_sshd.py [32mPASSED[0m[33m [ 89%][0m
+ssh/test/test_sshd.py::test_sshd[AuthenticationMethods publickey] <- ../features/ssh/test/test_sshd.py [32mPASSED[0m[33m [ 89%][0m
+ssh/test/test_sshd.py::test_sshd[LogLevel VERBOSE] <- ../features/ssh/test/test_sshd.py [32mPASSED[0m[33m [ 90%][0m
+ssh/test/test_sshd.py::test_sshd[Subsystem sftp /usr/lib/openssh/sftp-server -f AUTHPRIV -l INFO] <- ../features/ssh/test/test_sshd.py [32mPASSED[0m[33m [ 90%][0m
+ssh/test/test_sshd.py::test_sshd[PermitRootLogin No] <- ../features/ssh/test/test_sshd.py [32mPASSED[0m[33m [ 91%][0m
+ssh/test/test_sshd.py::test_sshd[X11Forwarding no] <- ../features/ssh/test/test_sshd.py [32mPASSED[0m[33m [ 91%][0m
+ssh/test/test_sshd.py::test_sshd[UsePAM yes] <- ../features/ssh/test/test_sshd.py [32mPASSED[0m[33m [ 92%][0m
+vhost/test/test_capabilities.py::test_capabilities <- helper/tests/capabilities.py [33mSKIPPED[0m[33m [ 92%][0m
+vhost/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [ 93%][0m
+vhost/test/test_systemd_unit.py::test_systemd_unit[libvirtd] <- ../features/vhost/test/test_systemd_unit.py [33mSKIPPED[0m[33m [ 94%][0m
+vhost/test/test_users.py::test_users[libvirt-qemu] <- ../features/vhost/test/test_users.py [33mSKIPPED[0m[33m [ 94%][0m
+vmware/test/test_check_files.py::test_check_file[/usr/bin/dscheck_VMwareGuestInfo] <- ../features/vmware/test/test_check_files.py [33mSKIPPED[0m[33m [ 95%][0m
+vmware/test/test_check_files.py::test_check_file[/usr/lib/python3/dist-packages/cloudinit/sources/DataSourceVMwareGuestInfo.py] <- ../features/vmware/test/test_check_files.py [33mSKIPPED[0m[33m [ 95%][0m
+vmware/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/01_debian-cloud.cfg] <- ../features/vmware/test/test_check_files.py [33mSKIPPED[0m[33m [ 96%][0m
+vmware/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/99_disable-network-config.cfg] <- ../features/vmware/test/test_check_files.py [33mSKIPPED[0m[33m [ 96%][0m
+vmware/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/99_enabled-datasources.cfg] <- ../features/vmware/test/test_check_files.py [33mSKIPPED[0m[33m [ 97%][0m
+vmware/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-ntp] <- ../features/vmware/test/test_content_in_file.py [33mSKIPPED[0m[33m [ 97%][0m
+vmware/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-resizefs] <- ../features/vmware/test/test_content_in_file.py [33mSKIPPED[0m[33m [ 98%][0m
+vmware/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-growpart] <- ../features/vmware/test/test_content_in_file.py [33mSKIPPED[0m[33m [ 98%][0m
+vmware/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py [33mSKIPPED[0m[33m [ 99%][0m
+local/test_oci.py::test_oci_feat [33mSKIPPED[0m (test only supported on local)[33m  [100%][0m
+[1m------------------------------ live log teardown -------------------------------[0m
+[32mINFO    [0m helper.sshclient:sshclient.py:398 disconnected from self.host='3.66.224.1'
+
+
+[33m=============================== warnings summary ===============================[0m
+helper/tests/file_content.py:59
+  /gardenlinux/tests/helper/tests/file_content.py:59: SyntaxWarning: invalid escape sequence '\s'
+    line = re.sub("\s+"," ", line)
+
+helper/tests/password_hashes.py:16
+  /gardenlinux/tests/helper/tests/password_hashes.py:16: SyntaxWarning: invalid escape sequence '\['
+    if re.search("^.*\[success=. default=ignore\].*", line):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+[32m[1m____________________________ test_packages_musthave ____________________________[0m
+------------------------------ Captured log setup ------------------------------
+[32mINFO    [0m conftest:conftest.py:235 Testconfig for provisioner='manual' is {'features': ['log', 'sap', 'ssh', '_ephemeral', '_fwcfg', '_nopkg', '_prod', '_slim', 'base', 'server', 'cloud', 'aws', 'multipath', 'iscsi', 'nvme', 'gardener', '_usi', '_trustedboot'], 'host': '3.66.224.1', 'platform': 'aws', 'ssh': {'ssh_key_filepath': '~/.ssh/id_ed25519', 'user': 'admin'}}
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:255 Attempting to establish an SSH connection to 3.66.224.1:22...
+[32mINFO    [0m paramiko.transport:transport.py:1938 Connected (version 2.0, client OpenSSH_10.0p2)
+[32mINFO    [0m paramiko.transport:transport.py:1938 Authentication (publickey) successful!
+[32mINFO    [0m helper.sshclient:sshclient.py:270 Waiting for systemd to complete system initialization...
+[32mINFO    [0m helper.sshclient:sshclient.py:277 System initialization complete
+[32m[1m_________________________________ test_no_man __________________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ man ls
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=127
+[32mINFO    [0m helper.sshclient:sshclient.py:482 bash: line 1: man: command not found
+[32m[1m___________________________________ test_ls ____________________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ ls /
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 bin
+                                           boot
+                                           dev
+                                           efi
+                                           etc
+                                           home
+                                           lib
+                                           lib64
+                                           media
+                                           mnt
+                                           opt
+                                           proc
+                                           root
+                                           run
+                                           sbin
+                                           srv
+                                           sys
+                                           tmp
+                                           usr
+                                           var
+[32m[1m______________________________ test_startup_time _______________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ systemd-analyze
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 Startup finished in 3.154s (kernel) + 7.258s (initrd) + 8min 11.104s (userspace) = 8min 21.517s 
+                                           graphical.target reached after 8min 10.379s in userspace.
+[32m[1m_____________________________ test_startup_script ______________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ test -f /tmp/startup-script-ok
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484
+[32m[1m__________________________ test_nvme_kernel_parameter __________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ grep -c nvme_core.io_timeout=4294967295 /proc/cmdline
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 1
+[32m[1m_________________________ test_metadata_connection_aws _________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ curl -sqX PUT 'http://169.254.169.254/latest/api/token'                    -H 'X-aws-ec2-metadata-token-ttl-seconds:60'
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 AQAEAFwSlPMzp3472gu0hRV--XLZnYp7ky0ij3PY3tXJ4yHBhA_pPg==
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ wget --timeout 5                --header='X-aws-ec2-metadata-token: AQAEAFwSlPMzp3472gu0hRV--XLZnYp7ky0ij3PY3tXJ4yHBhA_pPg=='                'http://169.254.169.254/'
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:482 --2025-10-07 16:28:55--  http://169.254.169.254/
+                                           Connecting to 169.254.169.254:80... connected.
+                                           HTTP request sent, awaiting response... 200 OK
+                                           Length: 307 [text/plain]
+                                           Saving to: ‘index.html’
+                                           
+                                                0K                                                       100% 53.0M=0s
+                                           
+                                           2025-10-07 16:28:55 (53.0 MB/s) - ‘index.html’ saved [307/307]
+[32m[1m_____________________________ test_ping4[8.8.8.8] ______________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ ping -c 5 -W 5 8.8.8.8
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+                                           64 bytes from 8.8.8.8: icmp_seq=1 ttl=118 time=0.759 ms
+                                           64 bytes from 8.8.8.8: icmp_seq=2 ttl=118 time=0.744 ms
+                                           64 bytes from 8.8.8.8: icmp_seq=3 ttl=118 time=0.734 ms
+                                           64 bytes from 8.8.8.8: icmp_seq=4 ttl=118 time=0.741 ms
+                                           64 bytes from 8.8.8.8: icmp_seq=5 ttl=118 time=0.747 ms
+                                           
+                                           --- 8.8.8.8 ping statistics ---
+                                           5 packets transmitted, 5 received, 0% packet loss, time 4097ms
+                                           rtt min/avg/max/mdev = 0.734/0.745/0.759/0.008 ms
+[32m[1m____________________________ test_ping4[dns.google] ____________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ ping -c 5 -W 5 dns.google
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 PING dns.google (8.8.8.8) 56(84) bytes of data.
+                                           64 bytes from dns.google (8.8.8.8): icmp_seq=1 ttl=118 time=0.756 ms
+                                           64 bytes from dns.google (8.8.8.8): icmp_seq=2 ttl=118 time=0.734 ms
+                                           64 bytes from dns.google (8.8.8.8): icmp_seq=3 ttl=118 time=0.732 ms
+                                           64 bytes from dns.google (8.8.8.8): icmp_seq=4 ttl=118 time=0.733 ms
+                                           64 bytes from dns.google (8.8.8.8): icmp_seq=5 ttl=118 time=0.727 ms
+                                           
+                                           --- dns.google ping statistics ---
+                                           5 packets transmitted, 5 received, 0% packet loss, time 4078ms
+                                           rtt min/avg/max/mdev = 0.727/0.736/0.756/0.010 ms
+[32m[1m_____________________________ test_ping4[heise.de] _____________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ ping -c 5 -W 5 heise.de
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 PING heise.de (193.99.144.80) 56(84) bytes of data.
+                                           64 bytes from redirector.heise.de (193.99.144.80): icmp_seq=1 ttl=247 time=1.57 ms
+                                           64 bytes from redirector.heise.de (193.99.144.80): icmp_seq=2 ttl=247 time=1.72 ms
+                                           64 bytes from redirector.heise.de (193.99.144.80): icmp_seq=3 ttl=247 time=1.58 ms
+                                           64 bytes from redirector.heise.de (193.99.144.80): icmp_seq=4 ttl=247 time=1.91 ms
+                                           64 bytes from redirector.heise.de (193.99.144.80): icmp_seq=5 ttl=247 time=1.47 ms
+                                           
+                                           --- heise.de ping statistics ---
+                                           5 packets transmitted, 5 received, 0% packet loss, time 4007ms
+                                           rtt min/avg/max/mdev = 1.467/1.648/1.908/0.152 ms
+[32m[1m_____________________________ test_aws_ena_driver ______________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ /sbin/ethtool -i $(ip -j link show  | jq -r '.[] | if .ifname != "lo" and .ifname != "docker0" then .ifname else empty end') | grep "^driver" | awk '{print $2}'
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 ena
+[32m[1m_________________________________ test_random __________________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ time dd if=/dev/random of=/dev/null bs=8k count=1000 iflag=fullblock
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:482 1000+0 records in
+                                           1000+0 records out
+                                           8192000 bytes (8.2 MB, 7.8 MiB) copied, 0.0243799 s, 336 MB/s
+                                           
+                                           real	0m0.026s
+                                           user	0m0.000s
+                                           sys	0m0.026s
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ time rngtest --blockcount=9000  < /dev/random
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=1
+[32mINFO    [0m helper.sshclient:sshclient.py:482 rngtest 5
+                                           Copyright (c) 2004 by Henrique de Moraes Holschuh
+                                           This is free software; see the source for copying conditions.  There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+                                           
+                                           rngtest: starting FIPS tests...
+                                           rngtest: bits received from input: 180000032
+                                           rngtest: FIPS 140-2 successes: 8992
+                                           rngtest: FIPS 140-2 failures: 8
+                                           rngtest: FIPS 140-2(2001-10-10) Monobit: 2
+                                           rngtest: FIPS 140-2(2001-10-10) Poker: 1
+                                           rngtest: FIPS 140-2(2001-10-10) Runs: 4
+                                           rngtest: FIPS 140-2(2001-10-10) Long run: 1
+                                           rngtest: FIPS 140-2(2001-10-10) Continuous run: 0
+                                           rngtest: input channel speed: (min=596.046; avg=2337.946; max=2384.186)Mibits/s
+                                           rngtest: FIPS tests speed: (min=94.423; avg=145.526; max=149.012)Mibits/s
+                                           rngtest: Program run time: 1254091 microseconds
+                                           
+                                           real	0m1.255s
+                                           user	0m1.211s
+                                           sys	0m0.044s
+[32m[1m________________________ test_systemctl_no_failed_units ________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ systemctl list-units --output=json --state=failed
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 []
+[32m[1m__________________________________ test_clock __________________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ date '+%s'
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 1759854555
+[32m[1m___________________________ test_files_not_in_future ___________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ cat << '__EOF'
+                                           import os
+                                           import sys
+                                           from datetime import datetime
+                                           
+                                           now = datetime.now()
+                                           dirs = ["/bin", "/etc/ssh"]
+                                           for dir in dirs:
+                                               for (dirpath, dirnames, filenames) in os.walk(dir):
+                                                   for f in filenames:
+                                                       file = os.path.join(dir, f)
+                                                       modification = datetime.fromtimestamp(os.path.getmtime(file))
+                                                       if modification > now:
+                                                           print(f"FAIL - {file}s timestamp is {modification}")
+                                                           sys.exit(1)
+                                           __EOF
+                                           
+                                            > /tmp/filemodtime-test.py
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 import os
+                                           import sys
+                                           from datetime import datetime
+                                           
+                                           now = datetime.now()
+                                           dirs = ["/bin", "/etc/ssh"]
+                                           for dir in dirs:
+                                               for (dirpath, dirnames, filenames) in os.walk(dir):
+                                                   for f in filenames:
+                                                       file = os.path.join(dir, f)
+                                                       modification = datetime.fromtimestamp(os.path.getmtime(file))
+                                                       if modification > now:
+                                                           print(f"FAIL - {file}s timestamp is {modification}")
+                                                           sys.exit(1)
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ python3 /tmp/filemodtime-test.py
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484
+[32m[1m_______________________________ test_clocksource _______________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ systemd-detect-virt
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 amazon
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ uname -m
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 x86_64
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ cat /sys/devices/system/clocksource/clocksource0/current_clocksource
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=0
+[32mINFO    [0m helper.sshclient:sshclient.py:484 kvm-clock
+[32m[1m______________________________ test_usr_read_only ______________________________[0m
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m helper.sshclient:sshclient.py:470 $ /usr/bin/touch /usr/fail-test
+[32mINFO    [0m helper.sshclient:sshclient.py:477 exit_status=1
+[32mINFO    [0m helper.sshclient:sshclient.py:482 touch: cannot touch '/usr/fail-test': Read-only file system
+[32m[1m________________ test_kernel_configs[test_kernel_config_tuple0] ________________[0m
+----------------------------- Captured stdout call -----------------------------
+Check if CONFIG_X86_SGX is enabled for amd64
+[32m[1m________________ test_kernel_configs[test_kernel_config_tuple1] ________________[0m
+----------------------------- Captured stdout call -----------------------------
+Check if CONFIG_X86_SGX_KVM is enabled for amd64
+[32m[1m________________ test_kernel_configs[test_kernel_config_tuple2] ________________[0m
+----------------------------- Captured stdout call -----------------------------
+Check if CONFIG_MAGIC_SYSRQ is disabled for all
+[32m[1m_______________________________ test_iscsi_setup _______________________________[0m
+------------------------------ Captured log setup ------------------------------
+[32mINFO    [0m root:test_iscsi.py:13 Starting iSCSI setup test
+[32mINFO    [0m root:test_iscsi.py:36 iscsiadm login: Login to [iface: default, target: iqn.2025-04.localhost:storage.disk1, portal: 127.0.0.1,3260] successful.
+------------------------------ Captured log call -------------------------------
+[32mINFO    [0m root:test_iscsi.py:51 Block devices before rescan: total 0
+                               drwxr-xr-x  3 root root 120 Oct  7 16:20 .
+                               drwxr-xr-x 11 root root 220 Oct  7 16:20 ..
+                               lrwxrwxrwx  1 root root  13 Oct  7 16:20 pci-0000:00:04.0-nvme-1 -> ../../nvme0n1
+                               drwxr-xr-x  7 root root 140 Oct  7 16:20 pci-0000:00:04.0-nvme-1-part
+                               lrwxrwxrwx  1 root root  15 Oct  7 16:20 pci-0000:00:04.0-nvme-1-part1 -> ../../nvme0n1p1
+                               lrwxrwxrwx  1 root root  15 Oct  7 16:20 pci-0000:00:04.0-nvme-1-part2 -> ../../nvme0n1p2
+[32mINFO    [0m root:test_iscsi.py:63 Rescan output: Rescanning session [sid: 1, target: iqn.2025-04.localhost:storage.disk1, portal: 127.0.0.1,3260]
+[32mINFO    [0m root:test_iscsi.py:66 Block devices after rescan: total 0
+                               drwxr-xr-x  3 root root 140 Oct  7 16:29 .
+                               drwxr-xr-x 11 root root 220 Oct  7 16:20 ..
+                               lrwxrwxrwx  1 root root   9 Oct  7 16:29 ip-127.0.0.1:3260-iscsi-iqn.2025-04.localhost:storage.disk1-lun-1 -> ../../sda
+                               lrwxrwxrwx  1 root root  13 Oct  7 16:20 pci-0000:00:04.0-nvme-1 -> ../../nvme0n1
+                               drwxr-xr-x  7 root root 140 Oct  7 16:20 pci-0000:00:04.0-nvme-1-part
+                               lrwxrwxrwx  1 root root  15 Oct  7 16:20 pci-0000:00:04.0-nvme-1-part1 -> ../../nvme0n1p1
+                               lrwxrwxrwx  1 root root  15 Oct  7 16:20 pci-0000:00:04.0-nvme-1-part2 -> ../../nvme0n1p2
+[32m[1m______________________________ test_nvme_locally _______________________________[0m
+---------------------------- Captured stdout setup -----------------------------
+Setup nvme device
+------------------------------ Captured log setup ------------------------------
+[32mINFO    [0m root:test_nvme_over_tcp_locally.py:57 1
+                                               /tmp/nvme.img1
+                                               127.0.0.1
+                                               tcp
+                                               4420
+                                               ipv4
+                                               NVMe over Fabrics configuration is set up.
+[32mINFO    [0m root:test_nvme_over_tcp_locally.py:60 Nvme devices: [{'NameSpace': 1, 'DevicePath': '/dev/nvme0n1', 'GenericPath': '/dev/ng0n1', 'Firmware': '1.0', 'ModelNumber': 'Amazon Elastic Block Store', 'SerialNumber': 'vol0a722a2165ab9c8c6', 'UsedBytes': 17179869184, 'MaximumLBA': 33554432, 'PhysicalSize': 17179869184, 'SectorSize': 512}]
+[32mINFO    [0m root:test_nvme_over_tcp_locally.py:70 {
+                                                 "Devices":[
+                                                   {
+                                                     "NameSpace":1,
+                                                     "DevicePath":"/dev/nvme0n1",
+                                                     "GenericPath":"/dev/ng0n1",
+                                                     "Firmware":"1.0",
+                                                     "ModelNumber":"Amazon Elastic Block Store",
+                                                     "SerialNumber":"vol0a722a2165ab9c8c6",
+                                                     "UsedBytes":17179869184,
+                                                     "MaximumLBA":33554432,
+                                                     "PhysicalSize":17179869184,
+                                                     "SectorSize":512
+                                                   },
+                                                   {
+                                                     "NameSpace":1,
+                                                     "DevicePath":"/dev/nvme1n1",
+                                                     "GenericPath":"/dev/ng1n1",
+                                                     "Firmware":"6.12.49-",
+                                                     "ModelNumber":"Linux",
+                                                     "SerialNumber":"64c8daf250fae7f0372a",
+                                                     "UsedBytes":536870912,
+                                                     "MaximumLBA":131072,
+                                                     "PhysicalSize":536870912,
+                                                     "SectorSize":4096
+                                                   }
+                                                 ]
+                                               }
+--------------------------- Captured stdout teardown ---------------------------
+Teardown nvme device and clean up
+- generated xml file: /gardenlinux/tests/aws-gardener_prod_trustedboot-amd64.platform.test.xml -
+[36m[1m=========================== short test summary info ============================[0m
+[32mPASSED[0m aws/test/test_packages_musthave.py::[1mtest_packages_musthave[0m
+[32mPASSED[0m aws/test/test_users.py::[1mtest_users[0m
+[32mPASSED[0m base/test/test_basics.py::[1mtest_gl_is_support_distro[0m
+[32mPASSED[0m base/test/test_basics.py::[1mtest_no_man[0m
+[32mPASSED[0m base/test/test_basics.py::[1mtest_ls[0m
+[32mPASSED[0m base/test/test_basics.py::[1mtest_startup_time[0m
+[32mPASSED[0m base/test/test_basics.py::[1mtest_startup_script[0m
+[32mPASSED[0m base/test/test_blacklisted_packages.py::[1mtest_blacklisted_packages[rlogin][0m
+[32mPASSED[0m base/test/test_blacklisted_packages.py::[1mtest_blacklisted_packages[rsh][0m
+[32mPASSED[0m base/test/test_blacklisted_packages.py::[1mtest_blacklisted_packages[rcp][0m
+[32mPASSED[0m base/test/test_blacklisted_packages.py::[1mtest_blacklisted_packages[telnet][0m
+[32mPASSED[0m base/test/test_blacklisted_packages.py::[1mtest_blacklisted_packages[libdb5.3:amd64][0m
+[32mPASSED[0m base/test/test_blacklisted_packages.py::[1mtest_blacklisted_packages[libdb5.3:arm64][0m
+[32mPASSED[0m base/test/test_blacklisted_packages.py::[1mtest_blacklisted_packages[libssl1.1:amd64][0m
+[32mPASSED[0m base/test/test_blacklisted_packages.py::[1mtest_blacklisted_packages[libssl1.1:arm64][0m
+[32mPASSED[0m base/test/test_disable_sysrq.py::[1mtest_dmesg[/etc/sysctl.d/10-disable-sysrq.conf-args0][0m
+[32mPASSED[0m base/test/test_duplicate_uids.py::[1mtest_duplicate_uids[0m
+[32mPASSED[0m base/test/test_groups.py::[1mtest_groups[root-user0][0m
+[32mPASSED[0m base/test/test_groups.py::[1mtest_groups[wheel-user1][0m
+[32mPASSED[0m base/test/test_kernel_config.py::[1mtest_nvme_kernel_parameter[0m
+[32mPASSED[0m base/test/test_metadata_connection.py::[1mtest_metadata_connection_aws[0m
+[32mPASSED[0m base/test/test_network.py::[1mtest_ping4[8.8.8.8][0m
+[32mPASSED[0m base/test/test_network.py::[1mtest_ping4[dns.google][0m
+[32mPASSED[0m base/test/test_network.py::[1mtest_ping4[heise.de][0m
+[32mPASSED[0m base/test/test_packages_musthave.py::[1mtest_packages_musthave[0m
+[32mPASSED[0m base/test/test_password_hashes.py::[1mtest_password_hashes[0m
+[32mPASSED[0m base/test/test_password_shadow.py::[1mtest_password_shadow[pwck -r-0-][0m
+[32mPASSED[0m base/test/test_password_shadow.py::[1mtest_password_shadow[grpck -r-0-][0m
+[32mPASSED[0m base/test/test_platform_driver.py::[1mtest_aws_ena_driver[0m
+[32mPASSED[0m base/test/test_random.py::[1mtest_random[0m
+[32mPASSED[0m base/test/test_sgid_suid_files.py::[1mtest_sgid_suid_files[sgid-whitelist_files0][0m
+[32mPASSED[0m base/test/test_sgid_suid_files.py::[1mtest_sgid_suid_files[suid-whitelist_files1][0m
+[32mPASSED[0m base/test/test_su.py::[1mtest_su_restriction[0m
+[32mPASSED[0m base/test/test_systemd.py::[1mtest_systemctl_no_failed_units[0m
+[32mPASSED[0m base/test/test_time_config.py::[1mtest_clock[0m
+[32mPASSED[0m base/test/test_time_config.py::[1mtest_files_not_in_future[0m
+[32mPASSED[0m base/test/test_time_config.py::[1mtest_clocksource[0m
+[32mPASSED[0m base/test/test_umask.py::[1mtest_umask[/etc/login.defs-dict0][0m
+[32mPASSED[0m base/test/test_umask.py::[1mtest_umask_cmd[0m
+[32mPASSED[0m base/test/test_usr_ro.py::[1mtest_usr_read_only[0m
+[32mPASSED[0m cloud/test/test_autologout.py::[1mtest_autologout[/etc/profile.d/50-autologout.sh-dict0][0m
+[32mPASSED[0m cloud/test/test_kernel_config.py::[1mtest_kernel_configs[test_kernel_config_tuple0][0m
+[32mPASSED[0m cloud/test/test_kernel_config.py::[1mtest_kernel_configs[test_kernel_config_tuple1][0m
+[32mPASSED[0m cloud/test/test_kernel_config.py::[1mtest_kernel_configs[test_kernel_config_tuple2][0m
+[32mPASSED[0m cloud/test/test_kernel_modules.py::[1mtest_kernel_modules[wireguard][0m
+[32mPASSED[0m cloud/test/test_only_one_kernel.py::[1mtest_number_installed_kernels[0m
+[32mPASSED[0m cloud/test/test_packages_musthave.py::[1mtest_packages_musthave[0m
+[32mPASSED[0m gardener/test/test_dmesg.py::[1mtest_dmesg[/etc/sysctl.d/40-allow-nonroot-dmesg.conf-args0][0m
+[32mPASSED[0m gardener/test/test_dmesg.py::[1mtest_dmesg[/tmp/sysctl.txt-args1][0m
+[32mPASSED[0m gardener/test/test_files_excluded.py::[1mtest_file_excluded[0m
+[32mPASSED[0m gardener/test/test_lsm.py::[1mtest_lsm[selinux-False][0m
+[32mPASSED[0m gardener/test/test_lsm.py::[1mtest_lsm[apparmor-True][0m
+[32mPASSED[0m gardener/test/test_packages_musthave.py::[1mtest_packages_musthave[0m
+[32mPASSED[0m gardener/test/test_sysctls.py::[1mtest_sysctls[net.ipv4.conf.all.rp_filter-isnotornotset-1][0m
+[32mPASSED[0m gardener/test/test_sysctls.py::[1mtest_sysctls[net.ipv4.conf.default.rp_filter-isnotornotset-1][0m
+[32mPASSED[0m gardener/test/test_systemd_units.py::[1mtest_systemd_unit[containerd][0m
+[32mPASSED[0m iscsi/test/test_iscsi.py::[1mtest_iscsi_setup[0m
+[32mPASSED[0m iscsi/test/test_packages_musthave.py::[1mtest_packages_musthave[0m
+[32mPASSED[0m nvme/test/test_kernel_modules.py::[1mtest_kernel_modules[nvme-tcp][0m
+[32mPASSED[0m nvme/test/test_nvme_over_tcp_locally.py::[1mtest_nvme_locally[0m
+[32mPASSED[0m nvme/test/test_packages_musthave.py::[1mtest_packages_musthave[0m
+[32mPASSED[0m server/test/test_autologin.py::[1mtest_autologin[/etc/systemd/system/serial-getty@.service.d/autologin.conf-args0][0m
+[32mPASSED[0m server/test/test_autologin.py::[1mtest_autologin[/etc/systemd/system/getty@tty1.service.d/autologin.conf-args1][0m
+[32mPASSED[0m server/test/test_capabilities.py::[1mtest_capabilities[0m
+[32mPASSED[0m server/test/test_history.py::[1mtest_history[/etc/profile.d/50-nohistory.sh-args0][0m
+[32mPASSED[0m server/test/test_kernel_parameter.py::[1mtest_kernel_parameter[fs.protected_symlinks-1][0m
+[32mPASSED[0m server/test/test_kernel_parameter.py::[1mtest_kernel_parameter[fs.protected_hardlinks-1][0m
+[32mPASSED[0m server/test/test_kernel_parameter.py::[1mtest_kernel_parameter[kernel.randomize_va_space-2][0m
+[32mPASSED[0m server/test/test_machine_id.py::[1mtest_machine_id_powered_on[0m
+[32mPASSED[0m server/test/test_packages_musthave.py::[1mtest_packages_musthave[0m
+[32mPASSED[0m server/test/test_pam.py::[1mtest_pam_faillock[/etc/pam.d/common-password-password required pam_passwdqc.so min=disabled,disabled,12,8,8 passphrase=4 similar=deny retry=5][0m
+[32mPASSED[0m server/test/test_pam.py::[1mtest_pam_faillock[/etc/pam.d/common-password-password required pam_pwhistory.so use_authtok remember=5 retry=5][0m
+[32mPASSED[0m server/test/test_pam_faillock.py::[1mtest_pam_faillock[/etc/pam.d/common-auth-auth required pam_faillock.so preauth silent audit deny=5 unlock_time=900][0m
+[32mPASSED[0m server/test/test_pam_faillock.py::[1mtest_pam_faillock[/etc/pam.d/common-auth-auth [default=die] pam_faillock.so authfail silent audit deny=5 unlock_time=900][0m
+[32mPASSED[0m server/test/test_pam_faillock.py::[1mtest_pam_faillock[/etc/pam.d/common-account-account required pam_faillock.so][0m
+[32mPASSED[0m server/test/test_reset_env_vars.py::[1mtest_reset_env_vars[/etc/sudoers-args0-True][0m
+[32mPASSED[0m server/test/test_systemctl.py::[1mtest_systemctl[enabled-services0][0m
+[32mPASSED[0m server/test/test_systemctl.py::[1mtest_systemctl[disabled-services1][0m
+[32mPASSED[0m ssh/test/test_sshd.py::[1mtest_sshd[HostKey /etc/ssh/ssh_host_ed25519_key][0m
+[32mPASSED[0m ssh/test/test_sshd.py::[1mtest_sshd[HostKey /etc/ssh/ssh_host_rsa_key][0m
+[32mPASSED[0m ssh/test/test_sshd.py::[1mtest_sshd[KexAlgorithms sntrup761x25519-sha512,sntrup761x25519-sha512@openssh.com,mlkem768x25519-sha256,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521][0m
+[32mPASSED[0m ssh/test/test_sshd.py::[1mtest_sshd[Ciphers chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com][0m
+[32mPASSED[0m ssh/test/test_sshd.py::[1mtest_sshd[MACs umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1][0m
+[32mPASSED[0m ssh/test/test_sshd.py::[1mtest_sshd[AuthenticationMethods publickey][0m
+[32mPASSED[0m ssh/test/test_sshd.py::[1mtest_sshd[LogLevel VERBOSE][0m
+[32mPASSED[0m ssh/test/test_sshd.py::[1mtest_sshd[Subsystem sftp /usr/lib/openssh/sftp-server -f AUTHPRIV -l INFO][0m
+[32mPASSED[0m ssh/test/test_sshd.py::[1mtest_sshd[PermitRootLogin No][0m
+[32mPASSED[0m ssh/test/test_sshd.py::[1mtest_sshd[X11Forwarding no][0m
+[32mPASSED[0m ssh/test/test_sshd.py::[1mtest_sshd[UsePAM yes][0m
+[33mSKIPPED[0m [4] helper/tests/capabilities.py: test is not part of the enabled features
+[33mSKIPPED[0m [21] helper/tests/packages_musthave.py: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/_selinux/test/test_kernel_cmdline.py:5: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/aide/test/test_aide_cron.py: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/ali/test/test_users.py: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/azure/test/test_azure_times.py: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/azure/test/test_users.py:7: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/base/test/test_debsums.py:4: test is disabled by feature cloud
+[33mSKIPPED[0m [1] ../features/base/test/test_metadata_connection.py:4: test not supported on aws platform
+[33mSKIPPED[0m [1] ../features/base/test/test_metadata_connection.py:30: test only supported on azure platform
+[33mSKIPPED[0m [1] ../features/base/test/test_metadata_connection.py:38: test only supported on ali platform
+[33mSKIPPED[0m [1] ../features/base/test/test_network.py:6: test only supported on azure platform
+[33mSKIPPED[0m [3] ../features/base/test/test_network.py:38: ipv6 not available in all vpcs
+[33mSKIPPED[0m [1] ../features/base/test/test_orphaned.py:6: test only supported on chroot
+[33mSKIPPED[0m [1] ../features/base/test/test_partition.py:14: test only supported on openstack
+[33mSKIPPED[0m [1] ../features/base/test/test_proc.py:4: test only supported on container platform
+[33mSKIPPED[0m [1] helper/tests/rkhunter.py:10: test only supported on chroot
+[33mSKIPPED[0m [1] ../features/base/test/test_systemd.py:25: test only supported on kvm platform
+[33mSKIPPED[0m [2] helper/tests/tiger.py:7: test only supported on chroot
+[33mSKIPPED[0m [1] ../features/base/test/test_time_config.py:14: test only supported on gcp platform
+[33mSKIPPED[0m [1] ../features/base/test/test_time_config.py:21: test only supported on azure platform
+[33mSKIPPED[0m [1] ../features/base/test/test_time_config.py:38: test not supported on aws platform
+[33mSKIPPED[0m [1] ../features/base/test/test_time_config.py:58: test only supported on gcp platform
+[33mSKIPPED[0m [1] ../features/base/test/test_time_config.py:128: test only supported on azure platform
+[33mSKIPPED[0m [1] ../features/base/test/test_users.py:4: test not supported on hyperscaler aws platform
+[33mSKIPPED[0m [1] ../features/chost/test/test_systemd_unit.py:6: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/cis/test/test_debian_cis.py:5: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/clamav/test/test_clamav_cron.py: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/fedramp/test/test_fedramp.py:6: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/firewall/test/test_nft_config.py: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/firewall/test/test_systemd_units.py:6: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/gcp/test/test_blacklisted_packages.py:4: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/gcp/test/test_users.py:7: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/khost/test/test_systemd_unit.py:6: test is not part of the enabled features
+[33mSKIPPED[0m [3] ../features/metal/test/test_kernel_config.py:6: test is not part of the enabled features
+[33mSKIPPED[0m [4] ../features/openstack/test/test_check_files.py:5: test is not part of the enabled features
+[33mSKIPPED[0m [3] ../features/openstack/test/test_content_in_file.py:6: test is not part of the enabled features
+[33mSKIPPED[0m [5] ../features/openstackbaremetal/test/test_check_files.py:5: test is not part of the enabled features
+[33mSKIPPED[0m [3] ../features/openstackbaremetal/test/test_content_in_file.py:6: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/openstackbaremetal/test/test_users.py: test is not part of the enabled features
+[33mSKIPPED[0m [2] ../features/server/test/test_dmesg.py:6: test is not supported on gardener
+[33mSKIPPED[0m [1] ../features/server/test/test_machine_id.py:4: test only supported on chroot
+[33mSKIPPED[0m [1] ../features/server/test/test_users.py:3: test not supported on hyperscaler aws platform
+[33mSKIPPED[0m [1] helper/tests/ssh_authorized.py:3: test only supported on chroot
+[33mSKIPPED[0m [1] ../features/vhost/test/test_systemd_unit.py:6: test is not part of the enabled features
+[33mSKIPPED[0m [1] ../features/vhost/test/test_users.py:4: test is not part of the enabled features
+[33mSKIPPED[0m [5] ../features/vmware/test/test_check_files.py:5: test is not part of the enabled features
+[33mSKIPPED[0m [3] ../features/vmware/test/test_content_in_file.py:6: test is not part of the enabled features
+[33mSKIPPED[0m [1] local/test_oci.py:13: test only supported on local
+[33m============ [32m89 passed[0m, [33m[1m95 skipped[0m, [33m[1m2 warnings[0m[33m in 93.77s (0:01:33)[0m[33m =============[0m
+make: Leaving directory '/home/runner/work/gardenlinux/gardenlinux/tests'

@@ -1,0 +1,34 @@
+{
+  "name": "pytest-multi-results-action",
+  "version": "0.8.0",
+  "description": "Summarize multiple pytest test results in GitHub Actions",
+  "main": "src/main.js",
+  "scripts": {
+    "build": "ncc build --license=LICENSE src/index.js",
+    "format": "prettier --write .",
+    "test": "./test_data.sh && node test-runner.js --files 'test-data/*.xml' --title 'Test Results' --summary true --result-types 'passed,skipped,failed,error' --output 'test-output/report.md'",
+    "test-metadata": "./test_data.sh && node test-runner.js --files 'test-data/*.xml' --title 'Test Metadata Results' --summary true --result-types 'passed,skipped,xfailed,failed,xpassed,error' --metadata-fields 'Artifact,Type,Namespace' --metadata-field-mapping '{\"Namespace\": \"Namespace\", \"Type\": \"Type\", \"Artifact\": \"Artifact\"}' --output 'test-output/report-metadata.md'",
+    "test-gl": "node test-runner.js --files 'test-data-gl/*.xml' --title 'Test Garden Linux Results' --summary true --result-types 'passed,skipped,failed,error' --metadata-fields 'Artifact,Type,Namespace' --metadata-field-mapping '{\"Namespace\": \"Namespace\", \"Type\": \"Type\", \"Artifact\": \"Artifact\"}' --output 'test-output/report-gl.md'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gardenlinux/pytest-multi-results-action.git"
+  },
+  "keywords": [
+    "pytest",
+    "results",
+    "actions",
+    "summary"
+  ],
+  "author": "Garden Linux Maintainers",
+  "license": "BSD 3-Clause",
+  "dependencies": {
+    "@actions/core": "^1.11",
+    "@actions/glob": "^0.5",
+    "fast-xml-parser": "^5.3"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38",
+    "prettier": "^3.6"
+  }
+}

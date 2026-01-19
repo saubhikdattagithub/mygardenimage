@@ -1,0 +1,83 @@
+🧪  running tests with args: ./run_tests --metadata Artifact openstack-gardener_prod_trustedboot-arm64 --metadata Type chroot --metadata Namespace test-ng --junit-xml=.build/../log/chroot.test-ng.xml --allow-system-modifications
+[1m================================================= test session starts ==================================================[0m
+platform linux -- Python 3.13.5, pytest-8.4.2, pluggy-1.6.0
+rootdir: /run/gardenlinux-tests/tests
+plugins: metadata-3.1.1
+collected 57 items
+
+test_basics.py [32m.[0m[32m.[0m[32m.[0m[33ms[0m[33ms[0m[33ms[0m[33m                                                                                            [ 10%][0m
+test_containers.py [33ms[0m[33ms[0m[33m                                                                                            [ 14%][0m
+test_network.py [33ms[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33ms[0m[33ms[0m[33ms[0m[33m                                                                                         [ 28%][0m
+test_nodejs.py [33ms[0m[33ms[0m[33m                                                                                                [ 31%][0m
+test_nvme.py [33ms[0m[33ms[0m[33m                                                                                                  [ 35%][0m
+test_packages.py [32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33m                                                                                          [ 45%][0m
+test_password_hashes.py [32m.[0m[32m.[0m[33m                                                                                       [ 49%][0m
+test_proc.py [32m.[0m[33ms[0m[33m                                                                                                  [ 52%][0m
+test_sapmachine.py [33ms[0m[33ms[0m[33ms[0m[33m                                                                                           [ 57%][0m
+test_ssh.py [33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[32m.[0m[33ms[0m[33m                                                                                        [ 80%][0m
+test_users.py [32m.[0m[32m.[0m[32m.[0m[33m                                                                                                [ 85%][0m
+test_vmware.py [33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33ms[0m[33m                                                                                          [100%][0m
+
+[33m=================================================== warnings summary ===================================================[0m
+../runtime/aarch64/lib/python3.13/site-packages/_pytest/config/__init__.py:833
+  /run/gardenlinux-tests/runtime/aarch64/lib/python3.13/site-packages/_pytest/config/__init__.py:833: PytestAssertRewriteWarning: Module already imported so cannot be rewritten; plugins.shell
+    self.import_plugin(import_spec)
+
+plugins/password_hashes.py:54
+  /run/gardenlinux-tests/tests/plugins/password_hashes.py:54: SyntaxWarning: invalid escape sequence '\]'
+    Handles escaped brackets (\]) as literals.
+
+test_password_hashes.py:4
+  /run/gardenlinux-tests/tests/test_password_hashes.py:4: PytestUnknownMarkWarning: Unknown pytest.mark.security_id - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.security_id(325)
+
+test_password_hashes.py:18
+  /run/gardenlinux-tests/tests/test_password_hashes.py:18: PytestUnknownMarkWarning: Unknown pytest.mark.security_id - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.security_id(325)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================================================== PASSES ========================================================
+----------------------- generated xml file: /run/gardenlinux-tests/tests/log/chroot.test-ng.xml ------------------------
+[36m[1m=============================================== short test summary info ================================================[0m
+[32mPASSED[0m test_basics.py::[1mtest_gl_is_support_distro[0m
+[32mPASSED[0m test_basics.py::[1mtest_no_man[0m
+[32mPASSED[0m test_basics.py::[1mtest_fhs[0m
+[32mPASSED[0m test_network.py::[1mtest_local_tcp_stack[2-127.0.0.1][0m
+[32mPASSED[0m test_network.py::[1mtest_local_tcp_stack[10-::1][0m
+[32mPASSED[0m test_network.py::[1mtest_local_udp_stack[2-127.0.0.1][0m
+[32mPASSED[0m test_network.py::[1mtest_local_udp_stack[10-::1][0m
+[32mPASSED[0m test_packages.py::[1mtest_no_denylisted_packages[rlogin][0m
+[32mPASSED[0m test_packages.py::[1mtest_no_denylisted_packages[rsh][0m
+[32mPASSED[0m test_packages.py::[1mtest_no_denylisted_packages[rcp][0m
+[32mPASSED[0m test_packages.py::[1mtest_no_denylisted_packages[telnet][0m
+[32mPASSED[0m test_packages.py::[1mtest_no_denylisted_packages[libdb5.3][0m
+[32mPASSED[0m test_packages.py::[1mtest_no_denylisted_packages[libssl1.1][0m
+[32mPASSED[0m test_password_hashes.py::[1mtest_password_entry_present[0m
+[32mPASSED[0m test_password_hashes.py::[1mtest_password_entry_uses_strong_hash[0m
+[32mPASSED[0m test_proc.py::[1mtest_image_proc_is_empty[0m
+[32mPASSED[0m test_ssh.py::[1mtest_users_have_only_root_authorized_keys_cloud[0m
+[32mPASSED[0m test_users.py::[1mtest_service_accounts_have_nologin_shell[0m
+[32mPASSED[0m test_users.py::[1mtest_root_home_permissions[0m
+[32mPASSED[0m test_users.py::[1mtest_no_extra_home_directories[0m
+[33mSKIPPED[0m [1] test_basics.py:42: not running on a booted system (reason: We can only measure startup time if we actually boot the system)
+[33mSKIPPED[0m [1] test_basics.py:61: not running on a booted system (reason: Kernel test makes sense only on booted system)
+[33mSKIPPED[0m [1] test_basics.py:67: excluded by feature condition: not gcp and not metal and not openstack (reason: Not compatible, usually because of missing external backends)
+[33mSKIPPED[0m [2] test_containers.py:9: not running on a booted system (reason: Container tests require systemd)
+[33mSKIPPED[0m [1] test_network.py:21: not running on a booted system (reason: ping requires full network stack)
+[33mSKIPPED[0m [1] test_network.py:76: not running on a booted system
+[33mSKIPPED[0m [1] test_network.py:87: not running on a booted system
+[33mSKIPPED[0m [1] test_network.py:95: excluded by feature condition: azure
+[33mSKIPPED[0m [1] test_nodejs.py:6: excluded by feature condition: nodejs
+[33mSKIPPED[0m [1] test_nodejs.py:14: excluded by feature condition: nodejs
+[33mSKIPPED[0m [1] test_nvme.py:13: not running on a booted system
+[33mSKIPPED[0m [1] test_nvme.py:22: not running on a booted system
+[33mSKIPPED[0m [1] test_proc.py:26: not running on a booted system
+[33mSKIPPED[0m [1] test_sapmachine.py:7: excluded by feature condition: sapmachine
+[33mSKIPPED[0m [1] test_sapmachine.py:14: excluded by feature condition: sapmachine
+[33mSKIPPED[0m [1] test_sapmachine.py:20: excluded by feature condition: sapmachine
+[33mSKIPPED[0m [10] test_ssh.py:52: not running on a booted system (reason: Calling sshd -T requires a booted system)
+[33mSKIPPED[0m [1] test_ssh.py:67: excluded by feature condition: ssh and not (ali or aws or azure or openstack) (reason: We want no authorized_keys for unmanaged users)
+[33mSKIPPED[0m [1] test_ssh.py:122: not running on a booted system (reason: Starting the unit requires a booted system)
+[33mSKIPPED[0m [3] test_vmware.py:16: excluded by feature condition: vmware
+[33mSKIPPED[0m [5] test_vmware.py:24: excluded by feature condition: vmware
+[33m====================================== [32m20 passed[0m, [33m[1m37 skipped[0m, [33m[1m4 warnings[0m[33m in 0.23s[0m[33m ======================================[0m

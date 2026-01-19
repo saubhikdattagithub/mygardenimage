@@ -1,0 +1,597 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0 -- /opt/venv/bin/python3
+cachedir: .pytest_cache
+metadata: {'Python': '3.13.7', 'Platform': 'Linux-6.11.0-1018-azure-x86_64-with-glibc2.41', 'Packages': {'pytest': '8.4.2', 'pluggy': '1.6.0'}, 'Artifact': 'metal-vhost-amd64-2010.0-6f7a7b19', 'Type': 'chroot', 'Namespace': 'test', 'Plugins': {'json-report': '1.5.0', 'rerunfailures': '16.0.1', 'metadata': '3.1.1'}}
+rootdir: /gardenlinux/tests
+configfile: pytest.ini
+testpaths: ../features, platform, local
+plugins: json-report-1.5.0, rerunfailures-16.0.1, metadata-3.1.1
+collecting ... collected 184 items
+
+_bfpxe/test/test_capabilities.py::test_capabilities <- helper/tests/capabilities.py SKIPPED [  0%]
+_bfpxe/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [  1%]
+_dev/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [  1%]
+_iso/test/test_capabilities.py::test_capabilities <- helper/tests/capabilities.py SKIPPED [  2%]
+_iso/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [  2%]
+_pxe/test/test_capabilities.py::test_capabilities <- helper/tests/capabilities.py SKIPPED [  3%]
+_pxe/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [  3%]
+_selinux/test/test_kernel_cmdline.py::test_kernel_cmdline[/etc/kernel/cmdline-security=selinux] <- ../features/_selinux/test/test_kernel_cmdline.py 
+-------------------------------- live log setup --------------------------------
+INFO     conftest:conftest.py:235 Testconfig for provisioner='chroot' is {'image': '/gardenlinux/input.tar', 'ip': '127.0.0.1', 'port': 2222, 'features': ['firewall', 'log', 'sap', 'ssh', '_fwcfg', '_legacy', '_selinux', '_slim', 'base', 'server', 'metal', 'vhost'], 'ssh': {'ssh_key_filepath': '/tmp/ssh_priv_key', 'user': 'test'}}
+INFO     platformSetup.chroot:chroot.py:34 Starting CHROOT platform tests.
+INFO     platformSetup.chroot:chroot.py:39 Validation starting...
+INFO     platformSetup.chroot:chroot.py:41 Using IP 127.0.0.1 to connect to chroot.
+INFO     platformSetup.chroot:chroot.py:43 Using port tcp/2222 to connect to chroot.
+INFO     platformSetup.chroot:chroot.py:95 Path to image archive defined: /gardenlinux/input.tar
+INFO     platformSetup.chroot:chroot.py:101 Image archive is present: /gardenlinux/input.tar
+INFO     platformSetup.chroot:chroot.py:126 Port for ssh connection defined: 2222
+INFO     platformSetup.chroot:chroot.py:294 Validating if 2222 on 127.0.0.1 is already in use.
+INFO     platformSetup.chroot:chroot.py:304 Port 2222 on 127.0.0.1 can be used.
+INFO     platformSetup.chroot:chroot.py:136 Creating rootfs as tmpdir
+INFO     platformSetup.chroot:chroot.py:138 Created rootfs in /tmp/gl-int-chroot-cj0mcmi6
+INFO     platformSetup.chroot:chroot.py:140 Unarchiving image /gardenlinux/input.tar to /tmp/gl-int-chroot-cj0mcmi6
+INFO     platformSetup.chroot:chroot.py:148 Unarchived image /gardenlinux/input.tar to /tmp/gl-int-chroot-cj0mcmi6
+INFO     platformSetup.chroot:chroot.py:163 Generating new SSH key for platform tests.
+INFO     helper.sshclient:sshclient.py:48 Ensuring SSH directory exists: /tmp
+INFO     helper.sshclient:sshclient.py:98 Generated ED25519 key pair at /tmp/ssh_priv_key
+INFO     platformSetup.chroot:chroot.py:168 SSH key for platform tests generated.
+INFO     platformSetup.chroot:chroot.py:173 Adjusting chroot environment
+INFO     platformSetup.chroot:chroot.py:181 Wrote garden-epoch to chroot in /tmp/gl-int-chroot-cj0mcmi6
+INFO     platformSetup.chroot:chroot.py:215 Running command: ssh-keygen -q -N "" -t dsa -f /tmp/gl-int-chroot-cj0mcmi6/etc/ssh/ssh_host_dsa_key
+ERROR    platformSetup.chroot:chroot.py:220 Command failed.
+INFO     platformSetup.chroot:chroot.py:215 Running command: ssh-keygen -q -N "" -t rsa -b 4096 -f /tmp/gl-int-chroot-cj0mcmi6/etc/ssh/ssh_host_rsa_key
+INFO     platformSetup.chroot:chroot.py:222 Command successfully executed.
+INFO     platformSetup.chroot:chroot.py:215 Running command: ssh-keygen -q -N "" -t ecdsa -f /tmp/gl-int-chroot-cj0mcmi6/etc/ssh/ssh_host_ecdsa_key
+INFO     platformSetup.chroot:chroot.py:222 Command successfully executed.
+INFO     platformSetup.chroot:chroot.py:215 Running command: ssh-keygen -q -N "" -t ed25519 -f /tmp/gl-int-chroot-cj0mcmi6/etc/ssh/ssh_host_ed25519_key
+INFO     platformSetup.chroot:chroot.py:222 Command successfully executed.
+INFO     platformSetup.chroot:chroot.py:227 Created directory: /tmp/gl-int-chroot-cj0mcmi6/run/sshd
+INFO     platformSetup.chroot:chroot.py:237 Copied sshd_config_platform_tests to: /tmp/gl-int-chroot-cj0mcmi6/etc/ssh/
+INFO     platformSetup.chroot:chroot.py:313 Creating user test
+INFO     platformSetup.chroot:chroot.py:284 Created /tmp/gl-int-chroot-cj0mcmi6/home/test/.ssh with mode 448.
+INFO     platformSetup.chroot:chroot.py:251 Copied authorized_keys to: /tmp/gl-int-chroot-cj0mcmi6/home/test/.ssh/test_authorized_keys
+INFO     platformSetup.chroot:chroot.py:276 Started SSHD in chroot environment.
+INFO     helper.sshclient:sshclient.py:404 Waiting for SSHD in test env to become ready on tcp/2222 and 127.0.0.1
+INFO     helper.sshclient:sshclient.py:424 1 Waiting... Run: 1/100 
+INFO     helper.sshclient:sshclient.py:424 0 Waiting... Run: 2/100 
+INFO     helper.sshclient:sshclient.py:427 SSH ready in test env.
+-------------------------------- live log call ---------------------------------
+INFO     helper.sshclient:sshclient.py:255 Attempting to establish an SSH connection to 127.0.0.1:2222...
+INFO     paramiko.transport:transport.py:1938 Connected (version 2.0, client OpenSSH_10.0p2)
+INFO     paramiko.transport:transport.py:1938 Authentication (publickey) successful!
+PASSED                                                                   [  4%]
+_selinux/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py PASSED [  4%]
+aide/test/test_aide_cron.py::test_aide_cron <- ../features/aide/test/test_aide_cron.py SKIPPED [  5%]
+aide/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [  5%]
+ali/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [  6%]
+ali/test/test_users.py::test_users <- ../features/ali/test/test_users.py SKIPPED [  7%]
+aws/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [  7%]
+aws/test/test_users.py::test_users <- ../features/aws/test/test_users.py SKIPPED [  8%]
+azure/test/test_azure_times.py::test_startup_time <- ../features/azure/test/test_azure_times.py SKIPPED [  8%]
+azure/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [  9%]
+azure/test/test_users.py::test_users <- ../features/azure/test/test_users.py SKIPPED [  9%]
+base/test/test_basics.py::test_gl_is_support_distro <- ../features/base/test/test_basics.py PASSED [ 10%]
+base/test/test_basics.py::test_no_man <- ../features/base/test/test_basics.py 
+-------------------------------- live log call ---------------------------------
+INFO     helper.sshclient:sshclient.py:470 $ man ls
+INFO     helper.sshclient:sshclient.py:477 exit_status=127
+INFO     helper.sshclient:sshclient.py:482 bash: line 1: man: command not found
+PASSED                                                                   [ 10%]
+base/test/test_basics.py::test_ls <- ../features/base/test/test_basics.py 
+-------------------------------- live log call ---------------------------------
+INFO     helper.sshclient:sshclient.py:470 $ ls /
+INFO     helper.sshclient:sshclient.py:477 exit_status=0
+INFO     helper.sshclient:sshclient.py:484 bin
+                                           boot
+                                           dev
+                                           efi
+                                           etc
+                                           garden-epoch
+                                           home
+                                           lib
+                                           lib64
+                                           media
+                                           mnt
+                                           opt
+                                           proc
+                                           root
+                                           run
+                                           sbin
+                                           srv
+                                           sys
+                                           tmp
+                                           usr
+                                           var
+PASSED                                                                   [ 11%]
+base/test/test_basics.py::test_startup_time <- ../features/base/test/test_basics.py SKIPPED [ 11%]
+base/test/test_basics.py::test_startup_script <- ../features/base/test/test_basics.py SKIPPED [ 12%]
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[rlogin] <- ../features/base/test/test_blacklisted_packages.py PASSED [ 13%]
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[rsh] <- ../features/base/test/test_blacklisted_packages.py PASSED [ 13%]
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[rcp] <- ../features/base/test/test_blacklisted_packages.py PASSED [ 14%]
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[telnet] <- ../features/base/test/test_blacklisted_packages.py PASSED [ 14%]
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[libdb5.3:amd64] <- ../features/base/test/test_blacklisted_packages.py PASSED [ 15%]
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[libdb5.3:arm64] <- ../features/base/test/test_blacklisted_packages.py PASSED [ 15%]
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[libssl1.1:amd64] <- ../features/base/test/test_blacklisted_packages.py PASSED [ 16%]
+base/test/test_blacklisted_packages.py::test_blacklisted_packages[libssl1.1:arm64] <- ../features/base/test/test_blacklisted_packages.py PASSED [ 16%]
+base/test/test_debsums.py::test_debsums[exclude0] <- ../features/base/test/test_debsums.py SKIPPED [ 17%]
+base/test/test_disable_sysrq.py::test_dmesg[/etc/sysctl.d/10-disable-sysrq.conf-args0] <- ../features/base/test/test_disable_sysrq.py SKIPPED [ 17%]
+base/test/test_duplicate_uids.py::test_duplicate_uids <- helper/tests/find_dup_uids.py PASSED [ 18%]
+base/test/test_groups.py::test_groups[root-user0] <- ../features/base/test/test_groups.py PASSED [ 19%]
+base/test/test_groups.py::test_groups[wheel-user1] <- ../features/base/test/test_groups.py PASSED [ 19%]
+base/test/test_kernel_config.py::test_nvme_kernel_parameter <- ../features/base/test/test_kernel_config.py SKIPPED [ 20%]
+base/test/test_metadata_connection.py::test_metadata_connection <- ../features/base/test/test_metadata_connection.py SKIPPED [ 20%]
+base/test/test_metadata_connection.py::test_metadata_connection_aws <- ../features/base/test/test_metadata_connection.py SKIPPED [ 21%]
+base/test/test_metadata_connection.py::test_metadata_connection_azure <- ../features/base/test/test_metadata_connection.py SKIPPED [ 21%]
+base/test/test_metadata_connection.py::test_metadate_connection_aliyun <- ../features/base/test/test_metadata_connection.py SKIPPED [ 22%]
+base/test/test_network.py::test_hostname_azure <- ../features/base/test/test_network.py SKIPPED [ 22%]
+base/test/test_network.py::test_ping4[8.8.8.8] <- ../features/base/test/test_network.py SKIPPED [ 23%]
+base/test/test_network.py::test_ping4[dns.google] <- ../features/base/test/test_network.py SKIPPED [ 23%]
+base/test/test_network.py::test_ping4[heise.de] <- ../features/base/test/test_network.py SKIPPED [ 24%]
+base/test/test_network.py::test_ping6[2001:4860:4860::8888] <- ../features/base/test/test_network.py SKIPPED [ 25%]
+base/test/test_network.py::test_ping6[dns.google] <- ../features/base/test/test_network.py SKIPPED [ 25%]
+base/test/test_network.py::test_ping6[heise.de] <- ../features/base/test/test_network.py SKIPPED [ 26%]
+base/test/test_orphaned.py::test_orphaned <- ../features/base/test/test_orphaned.py 
+-------------------------------- live log call ---------------------------------
+INFO     helper.sshclient:sshclient.py:470 $ apt-get update
+INFO     helper.sshclient:sshclient.py:477 exit_status=0
+INFO     helper.sshclient:sshclient.py:482 sudo: unable to resolve host b86f14524366: Name or service not known
+PASSED                                                                   [ 26%]
+base/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py PASSED [ 27%]
+base/test/test_partition.py::test_growpart <- ../features/base/test/test_partition.py SKIPPED [ 27%]
+base/test/test_password_hashes.py::test_password_hashes <- ../features/base/test/test_password_hashes.py PASSED [ 28%]
+base/test/test_password_shadow.py::test_password_shadow[pwck -r-0-] <- ../features/base/test/test_password_shadow.py PASSED [ 28%]
+base/test/test_password_shadow.py::test_password_shadow[grpck -r-0-] <- ../features/base/test/test_password_shadow.py PASSED [ 29%]
+base/test/test_platform_driver.py::test_aws_ena_driver <- ../features/base/test/test_platform_driver.py SKIPPED [ 29%]
+base/test/test_proc.py::test_proc <- ../features/base/test/test_proc.py SKIPPED [ 30%]
+base/test/test_random.py::test_random <- ../features/base/test/test_random.py SKIPPED [ 30%]
+base/test/test_rkhunter.py::test_rkhunter <- helper/tests/rkhunter.py SKIPPED [ 31%]
+base/test/test_sgid_suid_files.py::test_sgid_suid_files[sgid-whitelist_files0] <- ../features/base/test/test_sgid_suid_files.py PASSED [ 32%]
+base/test/test_sgid_suid_files.py::test_sgid_suid_files[suid-whitelist_files1] <- ../features/base/test/test_sgid_suid_files.py PASSED [ 32%]
+base/test/test_su.py::test_su_restriction <- ../features/base/test/test_su.py PASSED [ 33%]
+base/test/test_systemd.py::test_systemctl_no_failed_units <- ../features/base/test/test_systemd.py SKIPPED [ 33%]
+base/test/test_systemd.py::test_systemctl_no_failed_units_kvm <- ../features/base/test/test_systemd.py SKIPPED [ 34%]
+base/test/test_tiger.py::test_tiger <- helper/tests/tiger.py SKIPPED     [ 34%]
+base/test/test_time_config.py::test_correct_ntp <- ../features/base/test/test_time_config.py SKIPPED [ 35%]
+base/test/test_time_config.py::test_timesync <- ../features/base/test/test_time_config.py SKIPPED [ 35%]
+base/test/test_time_config.py::test_clock <- ../features/base/test/test_time_config.py 
+-------------------------------- live log call ---------------------------------
+INFO     helper.sshclient:sshclient.py:470 $ date '+%s'
+INFO     helper.sshclient:sshclient.py:477 exit_status=0
+INFO     helper.sshclient:sshclient.py:484 1759852371
+PASSED                                                                   [ 36%]
+base/test/test_time_config.py::test_ntp <- ../features/base/test/test_time_config.py SKIPPED [ 36%]
+base/test/test_time_config.py::test_ntp_hyperscaler <- ../features/base/test/test_time_config.py SKIPPED [ 37%]
+base/test/test_time_config.py::test_files_not_in_future <- ../features/base/test/test_time_config.py 
+-------------------------------- live log call ---------------------------------
+INFO     helper.sshclient:sshclient.py:470 $ cat << '__EOF'
+                                           import os
+                                           import sys
+                                           from datetime import datetime
+                                           
+                                           now = datetime.now()
+                                           dirs = ["/bin", "/etc/ssh"]
+                                           for dir in dirs:
+                                               for (dirpath, dirnames, filenames) in os.walk(dir):
+                                                   for f in filenames:
+                                                       file = os.path.join(dir, f)
+                                                       modification = datetime.fromtimestamp(os.path.getmtime(file))
+                                                       if modification > now:
+                                                           print(f"FAIL - {file}s timestamp is {modification}")
+                                                           sys.exit(1)
+                                           __EOF
+                                           
+                                            > /tmp/filemodtime-test.py
+INFO     helper.sshclient:sshclient.py:477 exit_status=0
+INFO     helper.sshclient:sshclient.py:484 import os
+                                           import sys
+                                           from datetime import datetime
+                                           
+                                           now = datetime.now()
+                                           dirs = ["/bin", "/etc/ssh"]
+                                           for dir in dirs:
+                                               for (dirpath, dirnames, filenames) in os.walk(dir):
+                                                   for f in filenames:
+                                                       file = os.path.join(dir, f)
+                                                       modification = datetime.fromtimestamp(os.path.getmtime(file))
+                                                       if modification > now:
+                                                           print(f"FAIL - {file}s timestamp is {modification}")
+                                                           sys.exit(1)
+INFO     helper.sshclient:sshclient.py:470 $ python3 /tmp/filemodtime-test.py
+INFO     helper.sshclient:sshclient.py:477 exit_status=0
+INFO     helper.sshclient:sshclient.py:484 
+PASSED                                                                   [ 38%]
+base/test/test_time_config.py::test_clocksource <- ../features/base/test/test_time_config.py SKIPPED [ 38%]
+base/test/test_time_config.py::test_chrony <- ../features/base/test/test_time_config.py SKIPPED [ 39%]
+base/test/test_umask.py::test_umask[/etc/login.defs-dict0] <- ../features/base/test/test_umask.py PASSED [ 39%]
+base/test/test_umask.py::test_umask_cmd <- ../features/base/test/test_umask.py PASSED [ 40%]
+base/test/test_users.py::test_users <- ../features/base/test/test_users.py SKIPPED [ 40%]
+base/test/test_usr_ro.py::test_usr_read_only <- ../features/base/test/test_usr_ro.py SKIPPED [ 41%]
+bluefield/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 41%]
+chost/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 42%]
+chost/test/test_systemd_unit.py::test_systemd_unit[kubelet] <- ../features/chost/test/test_systemd_unit.py SKIPPED [ 42%]
+cis/test/test_debian_cis.py::test_debian_cis[args0] <- ../features/cis/test/test_debian_cis.py SKIPPED [ 43%]
+clamav/test/test_clamav_cron.py::test_clamav_cron <- ../features/clamav/test/test_clamav_cron.py SKIPPED [ 44%]
+clamav/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 44%]
+cloud/test/test_autologout.py::test_autologout[/etc/profile.d/50-autologout.sh-dict0] <- ../features/cloud/test/test_autologout.py SKIPPED [ 45%]
+cloud/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple0] <- ../features/cloud/test/test_kernel_config.py SKIPPED [ 45%]
+cloud/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple1] <- ../features/cloud/test/test_kernel_config.py SKIPPED [ 46%]
+cloud/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple2] <- ../features/cloud/test/test_kernel_config.py SKIPPED [ 46%]
+cloud/test/test_kernel_modules.py::test_kernel_modules[wireguard] <- ../features/cloud/test/test_kernel_modules.py SKIPPED [ 47%]
+cloud/test/test_only_one_kernel.py::test_number_installed_kernels <- ../features/cloud/test/test_only_one_kernel.py SKIPPED [ 47%]
+cloud/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 48%]
+fedramp/test/test_fedramp.py::test_fedramp[/gardenlinux/features/fedramp/test/test.sh] <- ../features/fedramp/test/test_fedramp.py SKIPPED [ 48%]
+fedramp/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 49%]
+firewall/test/test_nft_config.py::test_nft_config <- ../features/firewall/test/test_nft_config.py SKIPPED [ 50%]
+firewall/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py PASSED [ 50%]
+firewall/test/test_systemd_units.py::test_systemd_unit[nftables] <- ../features/firewall/test/test_systemd_units.py SKIPPED [ 51%]
+gardener/test/test_dmesg.py::test_dmesg[/etc/sysctl.d/40-allow-nonroot-dmesg.conf-args0] <- ../features/gardener/test/test_dmesg.py SKIPPED [ 51%]
+gardener/test/test_dmesg.py::test_dmesg[/tmp/sysctl.txt-args1] <- ../features/gardener/test/test_dmesg.py SKIPPED [ 52%]
+gardener/test/test_files_excluded.py::test_file_excluded <- helper/tests/files_excluded.py SKIPPED [ 52%]
+gardener/test/test_lsm.py::test_lsm[selinux-False] <- ../features/gardener/test/test_lsm.py SKIPPED [ 53%]
+gardener/test/test_lsm.py::test_lsm[apparmor-True] <- ../features/gardener/test/test_lsm.py SKIPPED [ 53%]
+gardener/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 54%]
+gardener/test/test_sysctls.py::test_sysctls[net.ipv4.conf.all.rp_filter-isnotornotset-1] <- ../features/gardener/test/test_sysctls.py SKIPPED [ 54%]
+gardener/test/test_sysctls.py::test_sysctls[net.ipv4.conf.default.rp_filter-isnotornotset-1] <- ../features/gardener/test/test_sysctls.py SKIPPED [ 55%]
+gardener/test/test_systemd_units.py::test_systemd_unit[containerd] <- ../features/gardener/test/test_systemd_units.py SKIPPED [ 55%]
+gcp/test/test_blacklisted_packages.py::test_blacklisted_packages[irqbalance] <- ../features/gcp/test/test_blacklisted_packages.py SKIPPED [ 56%]
+gcp/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 57%]
+gcp/test/test_users.py::test_users <- ../features/gcp/test/test_users.py SKIPPED [ 57%]
+iscsi/test/test_iscsi.py::test_iscsi_setup <- ../features/iscsi/test/test_iscsi.py SKIPPED [ 58%]
+iscsi/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 58%]
+khost/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 59%]
+khost/test/test_systemd_unit.py::test_systemd_unit[kubelet] <- ../features/khost/test/test_systemd_unit.py SKIPPED [ 59%]
+kvm/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 60%]
+metal/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple0] <- ../features/metal/test/test_kernel_config.py PASSED [ 60%]
+metal/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple1] <- ../features/metal/test/test_kernel_config.py PASSED [ 61%]
+metal/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple2] <- ../features/metal/test/test_kernel_config.py PASSED [ 61%]
+metal/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py PASSED [ 62%]
+nvme/test/test_kernel_modules.py::test_kernel_modules[nvme-tcp] <- ../features/nvme/test/test_kernel_modules.py SKIPPED [ 63%]
+nvme/test/test_nvme_over_tcp_locally.py::test_nvme_locally <- ../features/nvme/test/test_nvme_over_tcp_locally.py SKIPPED [ 63%]
+nvme/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 64%]
+openstack/test/test_check_files.py::test_check_file[/etc/cloud/ds-identify.cfg] <- ../features/openstack/test/test_check_files.py SKIPPED [ 64%]
+openstack/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/01_debian-cloud.cfg] <- ../features/openstack/test/test_check_files.py SKIPPED [ 65%]
+openstack/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/50-datasource.cfg] <- ../features/openstack/test/test_check_files.py SKIPPED [ 65%]
+openstack/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/99_disable-network-config.cfg] <- ../features/openstack/test/test_check_files.py SKIPPED [ 66%]
+openstack/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-ntp] <- ../features/openstack/test/test_content_in_file.py SKIPPED [ 66%]
+openstack/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-resizefs] <- ../features/openstack/test/test_content_in_file.py SKIPPED [ 67%]
+openstack/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-growpart] <- ../features/openstack/test/test_content_in_file.py SKIPPED [ 67%]
+openstack/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 68%]
+openstackbaremetal/test/test_check_files.py::test_check_file[/etc/cloud/ds-identify.cfg] <- ../features/openstackbaremetal/test/test_check_files.py SKIPPED [ 69%]
+openstackbaremetal/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/01_debian-cloud.cfg] <- ../features/openstackbaremetal/test/test_check_files.py SKIPPED [ 69%]
+openstackbaremetal/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/50-datasource.cfg] <- ../features/openstackbaremetal/test/test_check_files.py SKIPPED [ 70%]
+openstackbaremetal/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/65-network-config.cfg] <- ../features/openstackbaremetal/test/test_check_files.py SKIPPED [ 70%]
+openstackbaremetal/test/test_check_files.py::test_check_file[/etc/dracut.conf.d/49-include-bnxt-drivers.conf] <- ../features/openstackbaremetal/test/test_check_files.py SKIPPED [ 71%]
+openstackbaremetal/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-ntp] <- ../features/openstackbaremetal/test/test_content_in_file.py SKIPPED [ 71%]
+openstackbaremetal/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-resizefs] <- ../features/openstackbaremetal/test/test_content_in_file.py SKIPPED [ 72%]
+openstackbaremetal/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-growpart] <- ../features/openstackbaremetal/test/test_content_in_file.py SKIPPED [ 72%]
+openstackbaremetal/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 73%]
+openstackbaremetal/test/test_users.py::test_users <- ../features/openstackbaremetal/test/test_users.py SKIPPED [ 73%]
+server/test/test_autologin.py::test_autologin[/etc/systemd/system/serial-getty@.service.d/autologin.conf-args0] <- ../features/server/test/test_autologin.py PASSED [ 74%]
+server/test/test_autologin.py::test_autologin[/etc/systemd/system/getty@tty1.service.d/autologin.conf-args1] <- ../features/server/test/test_autologin.py PASSED [ 75%]
+server/test/test_capabilities.py::test_capabilities <- helper/tests/capabilities.py SKIPPED [ 75%]
+server/test/test_dmesg.py::test_dmesg[/etc/sysctl.d/40-restric-dmesg.conf-args0] <- ../features/server/test/test_dmesg.py SKIPPED [ 76%]
+server/test/test_dmesg.py::test_dmesg[/tmp/sysctl.txt-args1] <- ../features/server/test/test_dmesg.py SKIPPED [ 76%]
+server/test/test_history.py::test_history[/etc/profile.d/50-nohistory.sh-args0] <- ../features/server/test/test_history.py PASSED [ 77%]
+server/test/test_kernel_parameter.py::test_kernel_parameter[fs.protected_symlinks-1] <- ../features/server/test/test_kernel_parameter.py SKIPPED [ 77%]
+server/test/test_kernel_parameter.py::test_kernel_parameter[fs.protected_hardlinks-1] <- ../features/server/test/test_kernel_parameter.py SKIPPED [ 78%]
+server/test/test_kernel_parameter.py::test_kernel_parameter[kernel.randomize_va_space-2] <- ../features/server/test/test_kernel_parameter.py SKIPPED [ 78%]
+server/test/test_machine_id.py::test_machine_id <- ../features/server/test/test_machine_id.py PASSED [ 79%]
+server/test/test_machine_id.py::test_machine_id_powered_on <- ../features/server/test/test_machine_id.py SKIPPED [ 79%]
+server/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py PASSED [ 80%]
+server/test/test_pam.py::test_pam_faillock[/etc/pam.d/common-password-password required pam_passwdqc.so min=disabled,disabled,12,8,8 passphrase=4 similar=deny retry=5] <- ../features/server/test/test_pam.py PASSED [ 80%]
+server/test/test_pam.py::test_pam_faillock[/etc/pam.d/common-password-password required pam_pwhistory.so use_authtok remember=5 retry=5] <- ../features/server/test/test_pam.py PASSED [ 81%]
+server/test/test_pam_faillock.py::test_pam_faillock[/etc/pam.d/common-auth-auth required pam_faillock.so preauth silent audit deny=5 unlock_time=900] <- ../features/server/test/test_pam_faillock.py PASSED [ 82%]
+server/test/test_pam_faillock.py::test_pam_faillock[/etc/pam.d/common-auth-auth [default=die] pam_faillock.so authfail silent audit deny=5 unlock_time=900] <- ../features/server/test/test_pam_faillock.py PASSED [ 82%]
+server/test/test_pam_faillock.py::test_pam_faillock[/etc/pam.d/common-account-account required pam_faillock.so] <- ../features/server/test/test_pam_faillock.py PASSED [ 83%]
+server/test/test_reset_env_vars.py::test_reset_env_vars[/etc/sudoers-args0-True] <- ../features/server/test/test_reset_env_vars.py PASSED [ 83%]
+server/test/test_systemctl.py::test_systemctl[enabled-services0] <- ../features/server/test/test_systemctl.py PASSED [ 84%]
+server/test/test_systemctl.py::test_systemctl[disabled-services1] <- ../features/server/test/test_systemctl.py PASSED [ 84%]
+server/test/test_tiger.py::test_tiger <- helper/tests/tiger.py SKIPPED   [ 85%]
+server/test/test_users.py::test_users <- ../features/server/test/test_users.py SKIPPED [ 85%]
+ssh/test/test_ssh_authorized.py::test_ssh_authorized <- helper/tests/ssh_authorized.py PASSED [ 86%]
+ssh/test/test_sshd.py::test_sshd[HostKey /etc/ssh/ssh_host_ed25519_key] <- ../features/ssh/test/test_sshd.py PASSED [ 86%]
+ssh/test/test_sshd.py::test_sshd[HostKey /etc/ssh/ssh_host_rsa_key] <- ../features/ssh/test/test_sshd.py PASSED [ 87%]
+ssh/test/test_sshd.py::test_sshd[KexAlgorithms sntrup761x25519-sha512,sntrup761x25519-sha512@openssh.com,mlkem768x25519-sha256,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521] <- ../features/ssh/test/test_sshd.py PASSED [ 88%]
+ssh/test/test_sshd.py::test_sshd[Ciphers chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com] <- ../features/ssh/test/test_sshd.py PASSED [ 88%]
+ssh/test/test_sshd.py::test_sshd[MACs umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1] <- ../features/ssh/test/test_sshd.py PASSED [ 89%]
+ssh/test/test_sshd.py::test_sshd[AuthenticationMethods publickey] <- ../features/ssh/test/test_sshd.py PASSED [ 89%]
+ssh/test/test_sshd.py::test_sshd[LogLevel VERBOSE] <- ../features/ssh/test/test_sshd.py PASSED [ 90%]
+ssh/test/test_sshd.py::test_sshd[Subsystem sftp /usr/lib/openssh/sftp-server -f AUTHPRIV -l INFO] <- ../features/ssh/test/test_sshd.py PASSED [ 90%]
+ssh/test/test_sshd.py::test_sshd[PermitRootLogin No] <- ../features/ssh/test/test_sshd.py PASSED [ 91%]
+ssh/test/test_sshd.py::test_sshd[X11Forwarding no] <- ../features/ssh/test/test_sshd.py PASSED [ 91%]
+ssh/test/test_sshd.py::test_sshd[UsePAM yes] <- ../features/ssh/test/test_sshd.py PASSED [ 92%]
+vhost/test/test_capabilities.py::test_capabilities <- helper/tests/capabilities.py SKIPPED [ 92%]
+vhost/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py PASSED [ 93%]
+vhost/test/test_systemd_unit.py::test_systemd_unit[libvirtd] <- ../features/vhost/test/test_systemd_unit.py SKIPPED [ 94%]
+vhost/test/test_users.py::test_users[libvirt-qemu] <- ../features/vhost/test/test_users.py PASSED [ 94%]
+vmware/test/test_check_files.py::test_check_file[/usr/bin/dscheck_VMwareGuestInfo] <- ../features/vmware/test/test_check_files.py SKIPPED [ 95%]
+vmware/test/test_check_files.py::test_check_file[/usr/lib/python3/dist-packages/cloudinit/sources/DataSourceVMwareGuestInfo.py] <- ../features/vmware/test/test_check_files.py SKIPPED [ 95%]
+vmware/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/01_debian-cloud.cfg] <- ../features/vmware/test/test_check_files.py SKIPPED [ 96%]
+vmware/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/99_disable-network-config.cfg] <- ../features/vmware/test/test_check_files.py SKIPPED [ 96%]
+vmware/test/test_check_files.py::test_check_file[/etc/cloud/cloud.cfg.d/99_enabled-datasources.cfg] <- ../features/vmware/test/test_check_files.py SKIPPED [ 97%]
+vmware/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-ntp] <- ../features/vmware/test/test_content_in_file.py SKIPPED [ 97%]
+vmware/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-resizefs] <- ../features/vmware/test/test_content_in_file.py SKIPPED [ 98%]
+vmware/test/test_content_in_file.py::test_file_content[/etc/cloud/cloud.cfg-growpart] <- ../features/vmware/test/test_content_in_file.py SKIPPED [ 98%]
+vmware/test/test_packages_musthave.py::test_packages_musthave <- helper/tests/packages_musthave.py SKIPPED [ 99%]
+local/test_oci.py::test_oci_feat SKIPPED (test only supported on local)  [100%]
+------------------------------ live log teardown -------------------------------
+INFO     helper.sshclient:sshclient.py:398 disconnected from self.host='127.0.0.1'
+
+
+=============================== warnings summary ===============================
+helper/tests/file_content.py:59
+  /gardenlinux/tests/helper/tests/file_content.py:59: SyntaxWarning: invalid escape sequence '\s'
+    line = re.sub("\s+"," ", line)
+
+helper/tests/password_hashes.py:16
+  /gardenlinux/tests/helper/tests/password_hashes.py:16: SyntaxWarning: invalid escape sequence '\['
+    if re.search("^.*\[success=. default=ignore\].*", line):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+__________ test_kernel_cmdline[/etc/kernel/cmdline-security=selinux] ___________
+---------------------------- Captured stdout setup -----------------------------
+passwd: password changed.
+------------------------------ Captured log setup ------------------------------
+INFO     conftest:conftest.py:235 Testconfig for provisioner='chroot' is {'image': '/gardenlinux/input.tar', 'ip': '127.0.0.1', 'port': 2222, 'features': ['firewall', 'log', 'sap', 'ssh', '_fwcfg', '_legacy', '_selinux', '_slim', 'base', 'server', 'metal', 'vhost'], 'ssh': {'ssh_key_filepath': '/tmp/ssh_priv_key', 'user': 'test'}}
+INFO     platformSetup.chroot:chroot.py:34 Starting CHROOT platform tests.
+INFO     platformSetup.chroot:chroot.py:39 Validation starting...
+INFO     platformSetup.chroot:chroot.py:41 Using IP 127.0.0.1 to connect to chroot.
+INFO     platformSetup.chroot:chroot.py:43 Using port tcp/2222 to connect to chroot.
+INFO     platformSetup.chroot:chroot.py:95 Path to image archive defined: /gardenlinux/input.tar
+INFO     platformSetup.chroot:chroot.py:101 Image archive is present: /gardenlinux/input.tar
+INFO     platformSetup.chroot:chroot.py:126 Port for ssh connection defined: 2222
+INFO     platformSetup.chroot:chroot.py:294 Validating if 2222 on 127.0.0.1 is already in use.
+INFO     platformSetup.chroot:chroot.py:304 Port 2222 on 127.0.0.1 can be used.
+INFO     platformSetup.chroot:chroot.py:136 Creating rootfs as tmpdir
+INFO     platformSetup.chroot:chroot.py:138 Created rootfs in /tmp/gl-int-chroot-cj0mcmi6
+INFO     platformSetup.chroot:chroot.py:140 Unarchiving image /gardenlinux/input.tar to /tmp/gl-int-chroot-cj0mcmi6
+INFO     platformSetup.chroot:chroot.py:148 Unarchived image /gardenlinux/input.tar to /tmp/gl-int-chroot-cj0mcmi6
+INFO     platformSetup.chroot:chroot.py:163 Generating new SSH key for platform tests.
+INFO     helper.sshclient:sshclient.py:48 Ensuring SSH directory exists: /tmp
+INFO     helper.sshclient:sshclient.py:98 Generated ED25519 key pair at /tmp/ssh_priv_key
+INFO     platformSetup.chroot:chroot.py:168 SSH key for platform tests generated.
+INFO     platformSetup.chroot:chroot.py:173 Adjusting chroot environment
+INFO     platformSetup.chroot:chroot.py:181 Wrote garden-epoch to chroot in /tmp/gl-int-chroot-cj0mcmi6
+INFO     platformSetup.chroot:chroot.py:215 Running command: ssh-keygen -q -N "" -t dsa -f /tmp/gl-int-chroot-cj0mcmi6/etc/ssh/ssh_host_dsa_key
+ERROR    platformSetup.chroot:chroot.py:220 Command failed.
+INFO     platformSetup.chroot:chroot.py:215 Running command: ssh-keygen -q -N "" -t rsa -b 4096 -f /tmp/gl-int-chroot-cj0mcmi6/etc/ssh/ssh_host_rsa_key
+INFO     platformSetup.chroot:chroot.py:222 Command successfully executed.
+INFO     platformSetup.chroot:chroot.py:215 Running command: ssh-keygen -q -N "" -t ecdsa -f /tmp/gl-int-chroot-cj0mcmi6/etc/ssh/ssh_host_ecdsa_key
+INFO     platformSetup.chroot:chroot.py:222 Command successfully executed.
+INFO     platformSetup.chroot:chroot.py:215 Running command: ssh-keygen -q -N "" -t ed25519 -f /tmp/gl-int-chroot-cj0mcmi6/etc/ssh/ssh_host_ed25519_key
+INFO     platformSetup.chroot:chroot.py:222 Command successfully executed.
+INFO     platformSetup.chroot:chroot.py:227 Created directory: /tmp/gl-int-chroot-cj0mcmi6/run/sshd
+INFO     platformSetup.chroot:chroot.py:237 Copied sshd_config_platform_tests to: /tmp/gl-int-chroot-cj0mcmi6/etc/ssh/
+INFO     platformSetup.chroot:chroot.py:313 Creating user test
+INFO     platformSetup.chroot:chroot.py:284 Created /tmp/gl-int-chroot-cj0mcmi6/home/test/.ssh with mode 448.
+INFO     platformSetup.chroot:chroot.py:251 Copied authorized_keys to: /tmp/gl-int-chroot-cj0mcmi6/home/test/.ssh/test_authorized_keys
+INFO     platformSetup.chroot:chroot.py:276 Started SSHD in chroot environment.
+INFO     helper.sshclient:sshclient.py:404 Waiting for SSHD in test env to become ready on tcp/2222 and 127.0.0.1
+INFO     helper.sshclient:sshclient.py:424 1 Waiting... Run: 1/100 
+INFO     helper.sshclient:sshclient.py:424 0 Waiting... Run: 2/100 
+INFO     helper.sshclient:sshclient.py:427 SSH ready in test env.
+------------------------------ Captured log call -------------------------------
+INFO     helper.sshclient:sshclient.py:255 Attempting to establish an SSH connection to 127.0.0.1:2222...
+INFO     paramiko.transport:transport.py:1938 Connected (version 2.0, client OpenSSH_10.0p2)
+INFO     paramiko.transport:transport.py:1938 Authentication (publickey) successful!
+_________________________________ test_no_man __________________________________
+------------------------------ Captured log call -------------------------------
+INFO     helper.sshclient:sshclient.py:470 $ man ls
+INFO     helper.sshclient:sshclient.py:477 exit_status=127
+INFO     helper.sshclient:sshclient.py:482 bash: line 1: man: command not found
+___________________________________ test_ls ____________________________________
+------------------------------ Captured log call -------------------------------
+INFO     helper.sshclient:sshclient.py:470 $ ls /
+INFO     helper.sshclient:sshclient.py:477 exit_status=0
+INFO     helper.sshclient:sshclient.py:484 bin
+                                           boot
+                                           dev
+                                           efi
+                                           etc
+                                           garden-epoch
+                                           home
+                                           lib
+                                           lib64
+                                           media
+                                           mnt
+                                           opt
+                                           proc
+                                           root
+                                           run
+                                           sbin
+                                           srv
+                                           sys
+                                           tmp
+                                           usr
+                                           var
+________________________________ test_orphaned _________________________________
+------------------------------ Captured log call -------------------------------
+INFO     helper.sshclient:sshclient.py:470 $ apt-get update
+INFO     helper.sshclient:sshclient.py:477 exit_status=0
+INFO     helper.sshclient:sshclient.py:482 sudo: unable to resolve host b86f14524366: Name or service not known
+__________________________________ test_clock __________________________________
+------------------------------ Captured log call -------------------------------
+INFO     helper.sshclient:sshclient.py:470 $ date '+%s'
+INFO     helper.sshclient:sshclient.py:477 exit_status=0
+INFO     helper.sshclient:sshclient.py:484 1759852371
+___________________________ test_files_not_in_future ___________________________
+------------------------------ Captured log call -------------------------------
+INFO     helper.sshclient:sshclient.py:470 $ cat << '__EOF'
+                                           import os
+                                           import sys
+                                           from datetime import datetime
+                                           
+                                           now = datetime.now()
+                                           dirs = ["/bin", "/etc/ssh"]
+                                           for dir in dirs:
+                                               for (dirpath, dirnames, filenames) in os.walk(dir):
+                                                   for f in filenames:
+                                                       file = os.path.join(dir, f)
+                                                       modification = datetime.fromtimestamp(os.path.getmtime(file))
+                                                       if modification > now:
+                                                           print(f"FAIL - {file}s timestamp is {modification}")
+                                                           sys.exit(1)
+                                           __EOF
+                                           
+                                            > /tmp/filemodtime-test.py
+INFO     helper.sshclient:sshclient.py:477 exit_status=0
+INFO     helper.sshclient:sshclient.py:484 import os
+                                           import sys
+                                           from datetime import datetime
+                                           
+                                           now = datetime.now()
+                                           dirs = ["/bin", "/etc/ssh"]
+                                           for dir in dirs:
+                                               for (dirpath, dirnames, filenames) in os.walk(dir):
+                                                   for f in filenames:
+                                                       file = os.path.join(dir, f)
+                                                       modification = datetime.fromtimestamp(os.path.getmtime(file))
+                                                       if modification > now:
+                                                           print(f"FAIL - {file}s timestamp is {modification}")
+                                                           sys.exit(1)
+INFO     helper.sshclient:sshclient.py:470 $ python3 /tmp/filemodtime-test.py
+INFO     helper.sshclient:sshclient.py:477 exit_status=0
+INFO     helper.sshclient:sshclient.py:484
+________________ test_kernel_configs[test_kernel_config_tuple0] ________________
+----------------------------- Captured stdout call -----------------------------
+Check if CONFIG_X86_SGX is enabled for amd64
+________________ test_kernel_configs[test_kernel_config_tuple1] ________________
+----------------------------- Captured stdout call -----------------------------
+Check if CONFIG_X86_SGX_KVM is enabled for amd64
+________________ test_kernel_configs[test_kernel_config_tuple2] ________________
+----------------------------- Captured stdout call -----------------------------
+Check if CONFIG_MAGIC_SYSRQ is disabled for all
+------------ generated xml file: /gardenlinux/tests/chroot.test.xml ------------
+=========================== short test summary info ============================
+PASSED _selinux/test/test_kernel_cmdline.py::test_kernel_cmdline[/etc/kernel/cmdline-security=selinux]
+PASSED _selinux/test/test_packages_musthave.py::test_packages_musthave
+PASSED base/test/test_basics.py::test_gl_is_support_distro
+PASSED base/test/test_basics.py::test_no_man
+PASSED base/test/test_basics.py::test_ls
+PASSED base/test/test_blacklisted_packages.py::test_blacklisted_packages[rlogin]
+PASSED base/test/test_blacklisted_packages.py::test_blacklisted_packages[rsh]
+PASSED base/test/test_blacklisted_packages.py::test_blacklisted_packages[rcp]
+PASSED base/test/test_blacklisted_packages.py::test_blacklisted_packages[telnet]
+PASSED base/test/test_blacklisted_packages.py::test_blacklisted_packages[libdb5.3:amd64]
+PASSED base/test/test_blacklisted_packages.py::test_blacklisted_packages[libdb5.3:arm64]
+PASSED base/test/test_blacklisted_packages.py::test_blacklisted_packages[libssl1.1:amd64]
+PASSED base/test/test_blacklisted_packages.py::test_blacklisted_packages[libssl1.1:arm64]
+PASSED base/test/test_duplicate_uids.py::test_duplicate_uids
+PASSED base/test/test_groups.py::test_groups[root-user0]
+PASSED base/test/test_groups.py::test_groups[wheel-user1]
+PASSED base/test/test_orphaned.py::test_orphaned
+PASSED base/test/test_packages_musthave.py::test_packages_musthave
+PASSED base/test/test_password_hashes.py::test_password_hashes
+PASSED base/test/test_password_shadow.py::test_password_shadow[pwck -r-0-]
+PASSED base/test/test_password_shadow.py::test_password_shadow[grpck -r-0-]
+PASSED base/test/test_sgid_suid_files.py::test_sgid_suid_files[sgid-whitelist_files0]
+PASSED base/test/test_sgid_suid_files.py::test_sgid_suid_files[suid-whitelist_files1]
+PASSED base/test/test_su.py::test_su_restriction
+PASSED base/test/test_time_config.py::test_clock
+PASSED base/test/test_time_config.py::test_files_not_in_future
+PASSED base/test/test_umask.py::test_umask[/etc/login.defs-dict0]
+PASSED base/test/test_umask.py::test_umask_cmd
+PASSED firewall/test/test_packages_musthave.py::test_packages_musthave
+PASSED metal/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple0]
+PASSED metal/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple1]
+PASSED metal/test/test_kernel_config.py::test_kernel_configs[test_kernel_config_tuple2]
+PASSED metal/test/test_packages_musthave.py::test_packages_musthave
+PASSED server/test/test_autologin.py::test_autologin[/etc/systemd/system/serial-getty@.service.d/autologin.conf-args0]
+PASSED server/test/test_autologin.py::test_autologin[/etc/systemd/system/getty@tty1.service.d/autologin.conf-args1]
+PASSED server/test/test_history.py::test_history[/etc/profile.d/50-nohistory.sh-args0]
+PASSED server/test/test_machine_id.py::test_machine_id
+PASSED server/test/test_packages_musthave.py::test_packages_musthave
+PASSED server/test/test_pam.py::test_pam_faillock[/etc/pam.d/common-password-password required pam_passwdqc.so min=disabled,disabled,12,8,8 passphrase=4 similar=deny retry=5]
+PASSED server/test/test_pam.py::test_pam_faillock[/etc/pam.d/common-password-password required pam_pwhistory.so use_authtok remember=5 retry=5]
+PASSED server/test/test_pam_faillock.py::test_pam_faillock[/etc/pam.d/common-auth-auth required pam_faillock.so preauth silent audit deny=5 unlock_time=900]
+PASSED server/test/test_pam_faillock.py::test_pam_faillock[/etc/pam.d/common-auth-auth [default=die] pam_faillock.so authfail silent audit deny=5 unlock_time=900]
+PASSED server/test/test_pam_faillock.py::test_pam_faillock[/etc/pam.d/common-account-account required pam_faillock.so]
+PASSED server/test/test_reset_env_vars.py::test_reset_env_vars[/etc/sudoers-args0-True]
+PASSED server/test/test_systemctl.py::test_systemctl[enabled-services0]
+PASSED server/test/test_systemctl.py::test_systemctl[disabled-services1]
+PASSED ssh/test/test_ssh_authorized.py::test_ssh_authorized
+PASSED ssh/test/test_sshd.py::test_sshd[HostKey /etc/ssh/ssh_host_ed25519_key]
+PASSED ssh/test/test_sshd.py::test_sshd[HostKey /etc/ssh/ssh_host_rsa_key]
+PASSED ssh/test/test_sshd.py::test_sshd[KexAlgorithms sntrup761x25519-sha512,sntrup761x25519-sha512@openssh.com,mlkem768x25519-sha256,curve25519-sha256,curve25519-sha256@libssh.org,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521]
+PASSED ssh/test/test_sshd.py::test_sshd[Ciphers chacha20-poly1305@openssh.com,aes128-ctr,aes192-ctr,aes256-ctr,aes128-gcm@openssh.com,aes256-gcm@openssh.com]
+PASSED ssh/test/test_sshd.py::test_sshd[MACs umac-64-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha1-etm@openssh.com,umac-64@openssh.com,umac-128@openssh.com,hmac-sha2-256,hmac-sha2-512,hmac-sha1]
+PASSED ssh/test/test_sshd.py::test_sshd[AuthenticationMethods publickey]
+PASSED ssh/test/test_sshd.py::test_sshd[LogLevel VERBOSE]
+PASSED ssh/test/test_sshd.py::test_sshd[Subsystem sftp /usr/lib/openssh/sftp-server -f AUTHPRIV -l INFO]
+PASSED ssh/test/test_sshd.py::test_sshd[PermitRootLogin No]
+PASSED ssh/test/test_sshd.py::test_sshd[X11Forwarding no]
+PASSED ssh/test/test_sshd.py::test_sshd[UsePAM yes]
+PASSED vhost/test/test_packages_musthave.py::test_packages_musthave
+PASSED vhost/test/test_users.py::test_users[libvirt-qemu]
+SKIPPED [3] helper/tests/capabilities.py: test is not part of the enabled features
+SKIPPED [22] helper/tests/packages_musthave.py: test is not part of the enabled features
+SKIPPED [1] ../features/aide/test/test_aide_cron.py: test is not part of the enabled features
+SKIPPED [1] ../features/ali/test/test_users.py: test is not part of the enabled features
+SKIPPED [1] ../features/aws/test/test_users.py:7: test is not part of the enabled features
+SKIPPED [1] ../features/azure/test/test_azure_times.py: test is not part of the enabled features
+SKIPPED [1] ../features/azure/test/test_users.py:7: test is not part of the enabled features
+SKIPPED [1] ../features/base/test/test_basics.py:52: test not supported on chroot
+SKIPPED [1] ../features/base/test/test_basics.py:82: test not supported on chroot
+SKIPPED [1] ../features/base/test/test_debsums.py:4: test is disabled by feature metal
+SKIPPED [1] ../features/base/test/test_disable_sysrq.py:6: test not supported on chroot
+SKIPPED [1] ../features/base/test/test_kernel_config.py:6: test only supported on aws platform
+SKIPPED [1] ../features/base/test/test_metadata_connection.py:4: test not supported on chroot
+SKIPPED [1] ../features/base/test/test_metadata_connection.py:13: test only supported on aws platform
+SKIPPED [1] ../features/base/test/test_metadata_connection.py:30: test only supported on azure platform
+SKIPPED [1] ../features/base/test/test_metadata_connection.py:38: test only supported on ali platform
+SKIPPED [1] ../features/base/test/test_network.py:6: test only supported on azure platform
+SKIPPED [3] ../features/base/test/test_network.py:26: test not supported on chroot
+SKIPPED [3] ../features/base/test/test_network.py:38: ipv6 not available in all vpcs
+SKIPPED [1] ../features/base/test/test_partition.py:14: test only supported on openstack
+SKIPPED [1] ../features/base/test/test_platform_driver.py:4: test only supported on aws platform
+SKIPPED [1] ../features/base/test/test_proc.py:4: test only supported on container platform
+SKIPPED [1] ../features/base/test/test_random.py:5: test not supported on metal
+SKIPPED [1] helper/tests/rkhunter.py:10: test not supported on chroot
+SKIPPED [1] ../features/base/test/test_systemd.py:5: test not supported on chroot
+SKIPPED [1] ../features/base/test/test_systemd.py:25: test only supported on kvm platform
+SKIPPED [2] helper/tests/tiger.py:7: test not supported on chroot
+SKIPPED [1] ../features/base/test/test_time_config.py:14: test only supported on gcp platform
+SKIPPED [1] ../features/base/test/test_time_config.py:21: test only supported on azure platform
+SKIPPED [1] ../features/base/test/test_time_config.py:38: test not supported on chroot
+SKIPPED [1] ../features/base/test/test_time_config.py:58: test only supported on aws platform
+SKIPPED [1] ../features/base/test/test_time_config.py:103: test only supported on aws platform
+SKIPPED [1] ../features/base/test/test_time_config.py:128: test only supported on azure platform
+SKIPPED [1] ../features/base/test/test_users.py:4: test not supported with vhost feature enabled
+SKIPPED [1] ../features/base/test/test_usr_ro.py:2: test not supported on chroot
+SKIPPED [1] ../features/chost/test/test_systemd_unit.py:6: test is not part of the enabled features
+SKIPPED [1] ../features/cis/test/test_debian_cis.py:5: test is not part of the enabled features
+SKIPPED [1] ../features/clamav/test/test_clamav_cron.py: test is not part of the enabled features
+SKIPPED [1] ../features/cloud/test/test_autologout.py:9: test is not part of the enabled features
+SKIPPED [3] ../features/cloud/test/test_kernel_config.py:6: test is not part of the enabled features
+SKIPPED [1] ../features/cloud/test/test_kernel_modules.py:7: test is not part of the enabled features
+SKIPPED [1] ../features/cloud/test/test_only_one_kernel.py: test is not part of the enabled features
+SKIPPED [1] ../features/fedramp/test/test_fedramp.py:6: test is not part of the enabled features
+SKIPPED [1] ../features/firewall/test/test_nft_config.py:4: test not supported on chroot
+SKIPPED [1] ../features/firewall/test/test_systemd_units.py:6: test not supported on chroot
+SKIPPED [2] ../features/gardener/test/test_dmesg.py:6: test is not part of the enabled features
+SKIPPED [1] helper/tests/files_excluded.py: test is not part of the enabled features
+SKIPPED [2] ../features/gardener/test/test_lsm.py:5: test is not part of the enabled features
+SKIPPED [2] ../features/gardener/test/test_sysctls.py:5: test is not part of the enabled features
+SKIPPED [1] ../features/gardener/test/test_systemd_units.py:6: test is not part of the enabled features
+SKIPPED [1] ../features/gcp/test/test_blacklisted_packages.py:4: test is not part of the enabled features
+SKIPPED [1] ../features/gcp/test/test_users.py:7: test is not part of the enabled features
+SKIPPED [1] ../features/iscsi/test/test_iscsi.py: test is not part of the enabled features
+SKIPPED [1] ../features/khost/test/test_systemd_unit.py:6: test is not part of the enabled features
+SKIPPED [1] ../features/nvme/test/test_kernel_modules.py:8: test is not part of the enabled features
+SKIPPED [1] ../features/nvme/test/test_nvme_over_tcp_locally.py: test is not part of the enabled features
+SKIPPED [4] ../features/openstack/test/test_check_files.py:5: test is not part of the enabled features
+SKIPPED [3] ../features/openstack/test/test_content_in_file.py:6: test is not part of the enabled features
+SKIPPED [5] ../features/openstackbaremetal/test/test_check_files.py:5: test is not part of the enabled features
+SKIPPED [3] ../features/openstackbaremetal/test/test_content_in_file.py:6: test is not part of the enabled features
+SKIPPED [1] ../features/openstackbaremetal/test/test_users.py: test is not part of the enabled features
+SKIPPED [2] helper/tests/capabilities.py:5: test not supported on chroot
+SKIPPED [2] ../features/server/test/test_dmesg.py:6: test not supported on chroot
+SKIPPED [3] ../features/server/test/test_kernel_parameter.py:4: test not supported on chroot
+SKIPPED [1] ../features/server/test/test_machine_id.py:7: test not supported on chroot
+SKIPPED [1] ../features/server/test/test_users.py:3: test not supported with vhost feature enabled
+SKIPPED [1] ../features/vhost/test/test_systemd_unit.py:6: test not supported on chroot
+SKIPPED [5] ../features/vmware/test/test_check_files.py:5: test is not part of the enabled features
+SKIPPED [3] ../features/vmware/test/test_content_in_file.py:6: test is not part of the enabled features
+SKIPPED [1] local/test_oci.py:13: test only supported on local
+================= 60 passed, 124 skipped, 2 warnings in 24.48s =================
