@@ -1,3 +1,4 @@
+1700
 LETSFO
 make: Entering directory '/home/runner/work/gardenlinux/gardenlinux/tests'
 podman run -it --rm -v /home/runner/work/gardenlinux/gardenlinux:/gardenlinux -v ~/.ssh:/root/.ssh:ro ghcr.io/gardenlinux/gardenlinux/platform-test-tofu:latest pytest --provisioner=manual --configfile=/gardenlinux/tests/config/pytest.manual.gcp-gardener_prod-amd64.yaml --junit-xml=/gardenlinux/tests/gcp-gardener_prod-amd64.platform.test.xml --metadata Artifact gcp-gardener_prod-amd64 --metadata Type platform --metadata Namespace test; 
@@ -860,3 +861,4 @@ Teardown nvme device and clean up
 [33m============ [32m88 passed[0m, [33m[1m96 skipped[0m, [33m[1m2 warnings[0m[33m in 109.73s (0:01:49)[0m[33m ============[0m
 
 make: Leaving directory '/home/runner/work/gardenlinux/gardenlinux/tests'
+
